@@ -6,7 +6,7 @@
 
 Bu depo, projenin statik GitHub Pages sitesinin kaynak kodunu barındırır: kurallar, roster (tim) oluşturucu, boyama rehberi, kaynakça ve terminoloji sözlüğü.
 
-🔗 **Canlı site:** *(GitHub Pages linkini buraya ekleyin)*
+🔗 **Canlı site:** https://savasmasasi.github.io/infaztimi/
 
 ---
 
