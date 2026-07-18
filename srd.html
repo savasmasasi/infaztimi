@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurallar - 39,000: İnfaz Timi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="srd-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="srd-page">
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link">Mahşer</a>
+                <a href="srd.html" class="nav-link active">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="srd-container">
+        <aside class="srd-sidebar">
+            <div class="sidebar-header">
+                <h3 class="sidebar-title">İçindekiler</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#giris" class="sidebar-link">Giriş</a>
+                <a href="#gerekenler" class="sidebar-link">Gerekenler</a>
+                <a href="#ozellikler" class="sidebar-link">Özellikler</a>
+                <a href="#oyun-duzeni" class="sidebar-link">Oyun Düzeni</a>
+                <a href="#hareket" class="sidebar-link">Hareket</a>
+                <a href="#arazi" class="sidebar-link">Arazi</a>
+                <a href="#atis" class="sidebar-link">Atış</a>
+                <a href="#dovus" class="sidebar-link">Dövüş</a>
+                <a href="#liderlik" class="sidebar-link">Liderlik</a>
+                <a href="#ek-kurallar" class="sidebar-link">Ek Kurallar</a>
+                <a href="#cephanelik" class="sidebar-link">Cephanelik</a>
+                <a href="#tim-olusturma" class="sidebar-link">Tim Oluşturmak</a>
+                <a href="#gorevler" class="sidebar-link">Görevler</a>
+                <a href="#harakat" class="sidebar-link">Harekât</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="tim-kur.html" class="download-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/>
+                    </svg>
+                    Tim Kur
+                </a>
+            </div>
+        </aside>
+
+        <main class="srd-content">
+            <div class="srd-header">
+                <h1 class="srd-main-title">
+                    <span class="title-number">39,000</span>
+                    <span class="title-text">İNFAZ TİMİ</span>
+                </h1>
+                <p class="srd-subtitle">Mahşer'in Kıyısında Müfreze Savaşları — v1.0</p>
+                <div class="srd-meta">
+                    <span class="meta-badge">Ücretsiz</span>
+                    <span class="meta-badge">CC0 Lisanslı</span>
+                    <span class="meta-badge">Topluluk Projesi</span>
+                </div>
+            </div>
+
+            <!-- ===== GİRİŞ ===== -->
+            <section id="giris" class="srd-section">
+                <h2 class="section-heading">Cehennemin Dibi</h2>
+                <div class="section-content">
+                    <p>Mahşer, Dünya'nın kuzeydoğusunda, otuz dokuz bin ışık yılı ötede süzülmektedir. Yüzlerce milyar insanın çalıştığı dev fabrika kentleri — kovankentler — gezegenin yüzeyini kaplar. Bu kentlerin imalathaneleri, binlerce ışık yılı uzaktaki orduları silahlandırır. Mahşer kaybedilirse İmparatorluk'un gücü büyük bir darbe yer. Bu yüzden herkes ona hükmetmek istiyor.</p>
+
+                    <h3>Savaş</h3>
+                    <p>Ork Cenkbeyi Gazkulu Demirbaş, Mahşer'e iki kez saldırdı. İkinci saldırıda gezegenin başkenti Berzah içeriden ihanetle düştü. Hain Vali Erman van Ştrap, Ork güçleriyle anlaşarak kentin silah üretimini Gazkulu'ya devretti. Van Ştrap öldürüldü. Ama savaş bitmedi. Üçüncü Mahşer Savaşı devam ediyor.</p>
+
+                    <h3>Prometyum Ağı</h3>
+                    <p>Berzah'ın gerçek savaş alanı, kentin kendisi değil — altındaki karanlıktır. Prometyum Ağı, kovankentin temel ile çatı arasında uzanan dev boru-bağlantı ağıdır. Dar tüneller, sonsuz derinlikteki uçurumlar, çöken tavanlar, zehirli gaz bulutları. Büyük birlikler buraya giremez. Ama bir tim girebilir.</p>
+
+                    <div class="info-box">
+                        <div class="info-icon">⚔</div>
+                        <div class="info-content">
+                            <strong>Bu oyunda rolünüz bu: hem avcı hem av.</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== GEREKENLER ===== -->
+            <section id="gerekenler" class="srd-section">
+                <h2 class="section-heading">Gerekenler</h2>
+                <div class="section-content">
+                    <p>Bu bölüm oyunu oynamak için gereken temel malzemeleri açıklar. Temel kuralları okuduktan sonra ilk oyunlarınıza başlayabilirsiniz.</p>
+
+                    <h3>Model Figürler</h3>
+                    <p>Oyuncular "savaşçı" adı verilen modeller kullanır. Kendi timinizdeki modellere <strong>dost</strong>, rakibin ekibindekiler ise <strong>düşman</strong>dır.</p>
+
+                    <h3>Şablonlar</h3>
+                    <ul>
+                        <li><strong>Küçük patlama:</strong> 3" yarıçaplı</li>
+                        <li><strong>Büyük patlama:</strong> 5" yarıçaplı</li>
+                        <li><strong>Alev makinesi:</strong> Damla şeklinde, yaklaşık 8" uzunluğunda</li>
+                    </ul>
+
+                    <h3>Zarlar</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Zar</th><th>Açıklama</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>z6</strong></td><td>Normal altı yüzlü zar. Oyunun çoğu bu zarla oynanır.</td></tr>
+                                <tr><td><strong>Saçılma zarı</strong></td><td>Standart zarın modifiye edilmiş hali. Rastgele yön belirler.</td></tr>
+                                <tr><td><strong>Topçu zarı</strong></td><td>2, 4, 6, 8, 10 ve "Tutukluk" işaretlidir. Saçılma zarıyla birlikte kullanılır.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Zar Kuralları</h4>
+                    <ul>
+                        <li><strong>Yuvarlama:</strong> Kesirler her zaman yukarı yuvarlanır (3'ün yarısı = 2).</li>
+                        <li><strong>z3 atmak:</strong> z6 atıp sonucu ikiye böl, yukarı yuvarla (1-2=1, 3-4=2, 5-6=3).</li>
+                        <li><strong>Çoklu zar:</strong> Belirtilen sayıda zarı atıp topla (2z6 = 2-12 arası).</li>
+                        <li><strong>Tekrar atış:</strong> İkinci atış geçerlidir. Aynı zar iki kez tekrar atılamaz. Tüm zarlar yeniden atılmalıdır. İlk atışa uygulanan etkenler tekrar atışa da uygulanır.</li>
+                        <li><strong>Karşılaştırma:</strong> Her oyuncu bir zar atar, yüksek gelen kazanır. Beraberlikte tekrar.</li>
+                    </ul>
+
+                    <h3>Gösterge</h3>
+                    <p>Koşma, gözetleme, yılgın gibi durumları işaretlemek için gösterge kullanılır. Gerektiğinde savaşçının yanına konur, durumun etkisi bitince kaldırılır.</p>
+
+                    <h3>Diğer Gerekenler</h3>
+                    <ul>
+                        <li><strong>Oyun alanı:</strong> En az 60×60cm, ideal 120×120cm</li>
+                        <li><strong>Arazi unsurları:</strong> Ne kadar çok olursa o kadar iyi</li>
+                        <li><strong>Şerit metre:</strong> İnç ölçekli</li>
+                        <li><strong>Kâğıt, kalem:</strong> Tim kütüğü için</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ===== ÖZELLİKLER ===== -->
+            <section id="ozellikler" class="srd-section">
+                <h2 class="section-heading">Özellikler</h2>
+                <div class="section-content">
+                    <p>Her savaşçının 1-10 arası değerlere sahip bir dizi özelliği vardır. Bu değer ne kadar yüksekse o kadar iyidir.</p>
+
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Kısaltma</th><th>Özellik</th><th>Açıklama</th></tr></thead>
+                            <tbody>
+                                <tr><td>HRK</td><td>Hareket</td><td>Bir turda kaç inç hareket edebileceğini gösterir (genelde 4")</td></tr>
+                                <tr><td>DVŞ</td><td>Dövüş</td><td>Göğüs göğse dövüşteki yeteneği</td></tr>
+                                <tr><td>ATŞ</td><td>Atış</td><td>Menzilli silahları ne kadar iyi kullanabildiği</td></tr>
+                                <tr><td>KUV</td><td>Kuvvet</td><td>Dövüşte avantaj sağlar</td></tr>
+                                <tr><td>DYN</td><td>Dayanım</td><td>Yaralanmaya ne kadar dayanıklı olduğu</td></tr>
+                                <tr><td>CAN</td><td>Can</td><td>Etkisiz hale gelmeden önce kaç yara alabileceği. Çoğu savaşçı için 1'dir.</td></tr>
+                                <tr><td>ÖNC</td><td>Öncelik</td><td>Tepki hızı ve tetikte olma hali</td></tr>
+                                <tr><td>SAL</td><td>Saldırı</td><td>Göğüs göğse dövüşte kaç zar atacağı</td></tr>
+                                <tr><td>LDR</td><td>Liderlik</td><td>Cesareti ve kendisine hakimiyeti</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Asgari Değer</h3>
+                    <p>Özellikler 1'in (Liderlik ise 2'nin) altına düşmez. Can değeri 0'a dek inebilir.</p>
+
+                    <h3>Özellik Sınaması</h3>
+                    <p>Z6 atılır. Zar, özelliğe eşit veya altında gelirse başarılı sayılır. 6 her zaman başarısızdır. Liderlik sınaması için 2z6 kullanılır.</p>
+
+                    <h3>Figür Profili</h3>
+                    <p>Bir savaşçının özellikleri figür profilinde gösterilir. Tüm bu bilgiler tim kütüğüne kaydedilir.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead>
+                                <tr><th>Savaşçı</th><th>HRK</th><th>DVŞ</th><th>ATŞ</th><th>KUV</th><th>DYN</th><th>CAN</th><th>ÖNC</th><th>SAL</th><th>LDR</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Uzay Komandosu İzcisi</td><td>5"</td><td>4</td><td>4</td><td>4</td><td>4</td><td>1</td><td>4</td><td>1</td><td>8</td></tr>
+                                <tr><td>Kıdemli Muhafız</td><td>4"</td><td>3</td><td>4</td><td>3</td><td>3</td><td>1</td><td>3</td><td>1</td><td>7</td></tr>
+                                <tr><td>Ork Velet</td><td>4"</td><td>4</td><td>2</td><td>3</td><td>4</td><td>1</td><td>2</td><td>2</td><td>7</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== OYUN DÜZENİ ===== -->
+            <section id="oyun-duzeni" class="srd-section">
+                <h2 class="section-heading">Oyun Düzeni</h2>
+                <div class="section-content">
+                    <p>Oyunda iki taraf bulunur. Her iki taraf da birer infaz timini komuta eder. Figürler ve arazi unsurları senaryoya uygun olarak masaya yerleştirilir. Taraflar infaz timlerini sırayla komuta ederler.</p>
+
+                    <h3>Tur Aşamaları</h3>
+                    <ol>
+                        <li><strong>Hareket:</strong> Savaşçılarını hareket ettir</li>
+                        <li><strong>Atış:</strong> Silahlarla ateş et</li>
+                        <li><strong>Dövüş:</strong> Her iki taraf da dövüşür (eşzamanlı)</li>
+                        <li><strong>Toparlanma:</strong> Korkudan toparlanmaya çalış</li>
+                    </ol>
+                    <p>Bu oyun düzeni bitiş koşulu sağlanana kadar devam eder.</p>
+
+                    <h3>Sıralama</h3>
+                    <p>Aynı anda olan şeyler için aktif oyuncu sırayı seçer. Tur arası veya oyun öncesi/sonrası için karşılaştırmalı zar atılır, yüksek gelen taraf karar verir.</p>
+                </div>
+            </section>
+
+            <!-- ===== HAREKET ===== -->
+            <section id="hareket" class="srd-section">
+                <h2 class="section-heading">Hareket</h2>
+                <div class="section-content">
+                    <p>Hareket aşamasında savaşçılarınızı hareket ettirebilirsiniz. Savaşçıları birer birer hareket ettirin — bir savaşçının hareketini tamamlamadan diğerine geçmeyin.</p>
+
+                    <h3>Hareket Sırası</h3>
+                    <ol>
+                        <li><strong>Hücum edenler:</strong> Önce hücum yapacakları belirtin ve hareket ettirin</li>
+                        <li><strong>Zorunlu hareketler:</strong> Örneğin yılgın düşüp kaçanlar</li>
+                        <li><strong>Geri kalanlar:</strong> İstediğiniz sırayla</li>
+                    </ol>
+
+                    <h3>Normal Hareket</h3>
+                    <p>Savaşçılar HRK değeri kadar (genelde 4") herhangi yöne hareket edebilir. Bu mesafenin tamamını kullanmak zorunda değildirler. Hareketinin sonunda savaşçıyı yüzü dilediğiniz tarafa bakacak şekilde çevirebilirsiniz. Hareket etmeyen savaşçılar <strong>durağan</strong> sayılır.</p>
+
+                    <h3>Koşma</h3>
+                    <p>Koşan bir savaşçı HRK değerinin iki katı kadar ilerler ama o tur ateş edemez. Yanına bir <strong>koşu göstergesi</strong> koyun. Bu aynı zamanda sıra rakibe geçtiğinde vurulmayı da zorlaştırır.</p>
+
+                    <h3>Hücum</h3>
+                    <p>Bir savaşçının göğüs göğse dövüşe girmek için hücum etmesi gerekir. Hücuma geçmeden önce diğer savaşçıları hareket ettiremezsiniz.</p>
+                    <ul>
+                        <li>Görebildiği veya hücum menzilindeki düşmana hücum edebilir</li>
+                        <li><strong>Farkındalık:</strong> Görebildiği, saklı olmayan ve ÖNC × 2 mesafedeki düşmanlar</li>
+                        <li>İki kat hızla ilerleyip düşmana kaide teması kurmak gerekir</li>
+                        <li>Birden fazla düşmana aynı anda hücum edebilirsin (riskli!)</li>
+                        <li>Hücum turunda <strong>Çarpışma Puanına +1 bonus</strong></li>
+                    </ul>
+
+                    <h3>Oyun Alanından Çıkma</h3>
+                    <p>Normalde savaşçılar alandan çıkamaz. Görevin gerektirdiği durumlarda, Hareket aşamasında kenardan çıkabilir.</p>
+
+                    <h3>Saklanma</h3>
+                    <p>Alçak duvar, köşe gibi yerlerin ardına saklanılabilir. Saklanan savaşçıyı bir <strong>saklanma göstergesi</strong> ile işaretleyin. Saklanma hareket öncesinde, sonrasında veya sırasında yapılabilir.</p>
+                    <ul>
+                        <li>Görülemez, vurulamaz (model kısmen görünse de)</li>
+                        <li>Ateş edemez; hareket edip görünürse saklanma biter</li>
+                        <li>Koşan veya hücum eden saklanamaz</li>
+                        <li>Düşman ÖNC değeri kadar (inç) yakına gelirse saklanma biter</li>
+                    </ul>
+                    <div class="info-box">
+                        <div class="info-icon">ℹ</div>
+                        <div class="info-content"><strong>Sessiz silahlar:</strong> Saklıyken sessiz silahla ateş edersen: 1-3 = görülür, 4-6 = saklı kalır.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ARAZİ ===== -->
+            <section id="arazi" class="srd-section">
+                <h2 class="section-heading">Arazi</h2>
+                <div class="section-content">
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Arazi Türü</th><th>Örnekler</th><th>Etki</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Açık arazi</strong></td><td>Taban, platform, merdiven, kapı</td><td>Etkisiz</td></tr>
+                                <tr><td><strong>Zor arazi</strong></td><td>Dik yamaçlar, sıvı atık havuzları</td><td>1" ilerleme 2" sayılır</td></tr>
+                                <tr><td><strong>Çok zor arazi</strong></td><td>Katran, derin atık, dar geçitler</td><td>1" ilerleme 4" sayılır</td></tr>
+                                <tr><td><strong>Aşılmaz arazi</strong></td><td>Toksik atık, duvarlar, çökmüş tüneller</td><td>Geçilemez</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Duvar ve Engeller</h3>
+                    <ul>
+                        <li><strong>1 inçten alçak veya sığ:</strong> Aşılabilir, hareketi etkilemez</li>
+                        <li><strong>1-2 inç arası:</strong> Aşılabilir; hareketin yarısını kullanmış sayılır</li>
+                        <li><strong>2 inçten yüksek:</strong> Aşılamaz</li>
+                    </ul>
+
+                    <h3>Oynak Model Sendromu</h3>
+                    <p>Araziyle figür tam oturmazsa, iki oyuncu anlaşarak "gerçek" konumu belirtip modeli daha güvenli yere koyabilirler. Figür hedef alınırsa asıl yerine konur.</p>
+                </div>
+            </section>
+
+            <!-- ===== ATIŞ ===== -->
+            <section id="atis" class="srd-section">
+                <h2 class="section-heading">Atış</h2>
+                <div class="section-content">
+                    <p>Atış aşamasında her savaşçı bir kez, bir silahla ateş eder. Atışlar tek tek çözümlenir: atıcıyı seç, hedefi seç, isabet edip etmediğini çözümle, yaralanmayı ve hasarı belirle.</p>
+
+                    <h3>Kim Ateş Edebilir</h3>
+                    <ul>
+                        <li>Görüş hattı varsa ve uygun silahı varsa</li>
+                        <li>Hareket ettiyse de atış yapabilir (koştuysa edemez)</li>
+                        <li>Herhangi bir yöne ateş edebilir</li>
+                        <li>Düşmanla kaide temasındakiler edemez</li>
+                    </ul>
+
+                    <h3>Görüş Hattı</h3>
+                    <p>Figürün göz hizasına eğilip sahaya bakın. Hedefin vücudunun bir kısmını görüyorsanız ateş edebilirsiniz. Sadece silah/kılıç ucu görünürse edemezsiniz. Savaşçılar da görüşü engelleyebilir.</p>
+
+                    <h3>En Yakın Hedef</h3>
+                    <p>Bir savaşçı en yakın düşmana ateş etmelidir. Ama daha uzak hedefi vurması daha kolaysa ona ateş edebilir. Göğüs göğse dövüşteki veya yerde yatan düşmanı es geçebilir.</p>
+
+                    <h3>İsabet</h3>
+                    <p>Z6 atın. Atış yapan savaşçının ATŞ değeri gereken zarı belirler.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Atıcının ATŞ değeri</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>
+                            <tbody>
+                                <tr><td>Z6 sonucu</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td><td>-1</td><td>-2</td><td>-3</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>İsabet zarında 1 gelmesi her zaman ıska sayılır.</p>
+
+                    <h3>İsabet Etkenleri</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Etken</th><th>Durum</th></tr></thead>
+                            <tbody>
+                                <tr><td>-1</td><td>Kısmi siperde (hedefin yarısına kadar görünür)</td></tr>
+                                <tr><td>-2</td><td>Siperde (hedefin yarıdan fazlası görünmüyor)</td></tr>
+                                <tr><td>-1</td><td>Gözetlemedeyken ateş</td></tr>
+                                <tr><td>-1</td><td>Hücum eden hedefe ateş</td></tr>
+                                <tr><td>-1</td><td>Hedef önceki turda koştu</td></tr>
+                                <tr><td>-1</td><td>Küçük hedef (1 inçten küçük — savaşçılar değil!)</td></tr>
+                                <tr><td>+1</td><td>Büyük hedef (2 inçten büyük)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Menzil Etkenleri</h3>
+                    <p>Tabancalar, temel ve özel silahlar menzile duyarlıdır. Ağır silahlar her menzilde aynıdır.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Silah</th><th>Yakın Mesafe</th><th>Uzak Mesafe</th></tr></thead>
+                            <tbody>
+                                <tr><td>Temir tabancası</td><td>+2</td><td>—</td></tr>
+                                <tr><td>Temren tüfeği</td><td>+1</td><td>—</td></tr>
+                                <tr><td>Lazer tüfeği</td><td>+1</td><td>—</td></tr>
+                                <tr><td>Atgaç</td><td>+1</td><td>—</td></tr>
+                                <tr><td>Patlangaç</td><td>+1</td><td>-1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>7+ İsabet</h3>
+                    <p>Gereken zar 7+ olabilir. İsabet zarı atın; 6 gelirse ikinci bir zar atın:</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Gereken zar</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>
+                            <tbody><tr><td>İkinci z6</td><td>4+</td><td>5+</td><td>6+</td><td>Iska</td></tr></tbody>
+                        </table>
+                    </div>
+
+                    <h3>Sinme</h3>
+                    <p>Savaşçı isabet alır almaz sırt üstü yatırılır — <strong>sinmiş</strong> olur. Turun başında sinmiş haldeki bir savaşçı tur sonunda otomatikman toparlanır. Sinmiş savaşçılar yalnızca 2" sürünebilir.</p>
+                    <p><strong>Erken toparlanma:</strong> 2 inç mesafede başka dost savaşçı varsa (acemi veya devrilmiş yılgın savaşçı hariç) öncelik sınaması yapabilir. Başarırsa ayağa kalkar.</p>
+
+                    <h3>Yaralama Tablosu</h3>
+                    <p>Silahın Kuvveti'ni hedefin Dayanımı ile karşılaştırın. (—) yaralamanın mümkün olmadığı anlamına gelir.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead>
+                                <tr><th rowspan="2">KUV\DYN</th><th colspan="10">Hedefin Dayanımı</th></tr>
+                                <tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>1</strong></td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>2</strong></td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>3</strong></td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>4</strong></td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>5</strong></td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>6</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td><td>—</td></tr>
+                                <tr><td><strong>7</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>6</td></tr>
+                                <tr><td><strong>8</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+                                <tr><td><strong>9</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+                                <tr><td><strong>10</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>3</td><td>4</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Kurtulma Zarı (Zırh Sınaması)</h3>
+                    <p>Bazı savaşçılar zırh kuşanmışlardır. Z6 atın — yeterince yüksek gelirse zırh darbeyi sönümler. Zar 1 geldiğinde her zaman başarısız sayılır. Bazı silahların zırh etkeni vardır (örn. -1), bu da kurtulma zarına ceza uygular.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Zırh</th><th>Gereken zar</th></tr></thead>
+                            <tbody>
+                                <tr><td>Yumru derisi / deri zırh</td><td>6+</td></tr>
+                                <tr><td>İzci zırhı / karakabuk zırh / cephe zırhı</td><td>4+</td></tr>
+                                <tr><td>Flak zırh</td><td>6+ (şablon silahlarına karşı 5+)</td></tr>
+                                <tr><td>Erk zırhı / dretnot zırhı</td><td>3+</td></tr>
+                                <tr><td>Örgü zırh</td><td>5+</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-icon">ℹ</div>
+                        <div class="info-content"><strong>Dokunulmazlık sınamaları</strong> da zırh sınamaları gibi çözümlenir ama hiçbir etken almaz. Bir savaşçı zırh veya dokunulmazlık sınamalarından yalnızca birini kullanabilir.</div>
+                    </div>
+
+                    <h3>Hasar Tablosu</h3>
+                    <p>Son can değerini de kaybeden savaşçı için hasar zarı atın:</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Zar</th><th>Sonuç</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1</strong></td><td><strong>Sıyrık:</strong> Hafif yara. Oyun boyunca ATŞ ve DVŞ değerlerinden 1 azaltın.</td></tr>
+                                <tr><td><strong>2-5</strong></td><td><strong>Devrilmiş:</strong> Hedef yaralanıp yere devrilir. Figürü yüz üstü çevirin.</td></tr>
+                                <tr><td><strong>6</strong></td><td><strong>Saf dışı:</strong> Etkisiz hale getirilmiştir. Figür derhal oyundan çıkarılır.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Yüksek Etki:</strong> Kuvvet 7+ olan silahlar için ilk hasar zarında saf dışı sonucu 5 veya 6'da gerçekleşir.</p>
+                    <p><strong>Devrilmiş savaşçılar:</strong> Hareket aşamasında 2" sürünebilir, başka bir şey yapamaz. Toparlanma aşamasında hasar zarı atılır: 1 = sinmiş, 2-5 = durumu değişmez, 6 = saf dışı kalır.</p>
+
+                    <h3>Cephane Sınaması</h3>
+                    <p>Atış zarında 6 atarsanız cephane sınaması yapın. 2z6 atın. Silahın cephane değerinden düşükse silah bozulur ve oyun boyunca kullanılamaz. Bozulan silahlar sonraki savaş için tamir edilir.</p>
+
+                    <h3>Gözetleme</h3>
+                    <p>Ateş etmek yerine savaşçılarınız gözetlemeye geçebilir. Gözetleme göstergesi ile işaretlenir. Sıra rakipteyken 90° önündeki herhangi bir hedefe ateş edebilir. Gözetlemedeki savaşçılar isabet zarlarına -1 alır. Ateş ettikten sonra veya kendi turunuz başlayınca gözetleme biter.</p>
+
+                    <h3>Sürekli Ateş</h3>
+                    <p>Bazı silahlar birden fazla hedefe isabet edebilir. Silahın sürekli ateş zarı kadar z3 atıp toplayın — bu atış sayısıdır. Her atışı ayrı hesaplayın. İlk atış ana hedefe, diğerleri ana hedefin 4" yakınındaki herhangi bir hedefe.</p>
+
+                    <h3>İnfilaklı Silahlar</h3>
+                    <p>Küçük veya büyük patlama şablonu kullanırlar. İsabet ederse şablonu hedefin üstüne koyun — tamamen içindekiler vurulur; kısmen içindekiler için 4-5-6 gelirse vurulurlar. Iskalarsaçılma zarı + topçu zarı ile sapma belirlenir. Tutukluk (6) gelirse patlamamış sayılır. Azami saçılma: atıcı-hedef mesafesinin yarısından fazla sapamaz.</p>
+
+                    <h3>El Bombası</h3>
+                    <p>Atış yapmak yerine fırlatılır. Savaşçı KUV × 3 menzilinde hedefe atabilir. Büyük patlama şablonu kullanır. Saçılma mesafesi yarıya iner ama azami saçılma sınırı yoktur. Siperdeki hedefe atışta sadece -1 ceza; kısmi siperdeki hedefe ceza yok.</p>
+
+                    <h3>Alev Şablonu</h3>
+                    <p>Şablonun dar ucunu atıcıya, geniş ucunu hedefe koyun. İsabet zarı gerekmez — otomatik isabet. Menzil/siper cezaları uygulanmaz; alev siperi aşar.</p>
+                </div>
+            </section>
+
+            <!-- ===== DÖVÜŞ ===== -->
+            <section id="dovus" class="srd-section">
+                <h2 class="section-heading">Dövüş</h2>
+                <div class="section-content">
+                    <p>Göğüs göğse dövüş en tehlikeli çatışma türüdür. Dövüş aşamasında, sıranın kimde olduğu fark etmeksizin, <strong>her iki taraf aynı anda</strong> dövüşür. Dövüşen savaşçılar başka bir şey yapamaz.</p>
+
+                    <h3>Dövüş Sırası</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Adım</th><th>Açıklama</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1. Saldırı zarı</strong></td><td>Her oyuncu savaşçısının SAL değeri kadar z6 atar</td></tr>
+                                <tr><td><strong>2. Kazananı belirle</strong></td><td>En yüksek zar + DVŞ + etkenler = <strong>Çarpışma Puanı</strong>. Yüksek olan kazanır. Eşitlikte ÖNC yüksek olan kazanır.</td></tr>
+                                <tr><td><strong>3. İsabet sayısı</strong></td><td>Çarpışma puanları farkı kadar isabetli vuruş. ÖNC ile galiplik = 1 isabetli vuruş.</td></tr>
+                                <tr><td><strong>4. Yaralama</strong></td><td>Her isabetli darbe için yaralama zarı atın (atış ile aynı)</td></tr>
+                                <tr><td><strong>5. Kurtulma</strong></td><td>Zırh/dokunulmazlık kurtulmalarını atın</td></tr>
+                                <tr><td><strong>6. Hasar</strong></td><td>Hasar zarı atın</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Çarpışma Puanı Etkenleri</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Etken</th><th>Durum</th></tr></thead>
+                            <tbody>
+                                <tr><td>+1</td><td><strong>Vahim hata:</strong> Rakibin her vahim hata zarı (1 gelen) başına</td></tr>
+                                <tr><td>+1</td><td><strong>Kritik darbe:</strong> Her fazladan 6 başına</td></tr>
+                                <tr><td>+1</td><td><strong>Hücum:</strong> Savaşçın hücum ettiyse</td></tr>
+                                <tr><td>+1</td><td><strong>Yüksekte:</strong> Daha yüksek bir zemindeyse</td></tr>
+                                <tr><td>-1</td><td><strong>Yüklü:</strong> Ağır silah/ekipman taşıyorsa</td></tr>
+                                <tr><td>-1</td><td><strong>Engel:</strong> Engelin arkasından hücum ettiyse (sadece o turda)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Vahim Hata ve Kritik Darbe</h3>
+                    <p><strong>Vahim hata:</strong> 1 gelen saldırı zarı vahim hatadır. Her vahim hata için rakib Çarpışma Puanına +1 ekler.</p>
+                    <p><strong>Kritik darbe:</strong> İki veya daha fazla zar atıldığında — ilk 6 normal en yüksek sonuçtur; sonraki her ek 6 Çarpışma Puanına +1 ekler.</p>
+
+                    <h3>Zırh Etkenleri (Dövüşte)</h3>
+                    <p>Bıçak, kılıç gibi silahlar kullanıcının Kuvvetini temel alır:</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>KUV</th><th>Zırh Kurtulma Etkeni</th></tr></thead>
+                            <tbody>
+                                <tr><td>3 veya daha az</td><td>0</td></tr>
+                                <tr><td>4</td><td>-1</td></tr>
+                                <tr><td>5</td><td>-2</td></tr>
+                                <tr><td>6</td><td>-3</td></tr>
+                                <tr><td>7</td><td>-4</td></tr>
+                                <tr><td>8</td><td>-5</td></tr>
+                                <tr><td>9+</td><td>-6</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Savuşturma</h3>
+                    <p>Kılıçlı bir savaşçı, rakibini en yüksek saldırı zarını yeniden atmaya zorlayabilir — rakibinin en yüksek zarı kendi en yüksek zarından büyük olmalıdır. Her iki savaşçı da kılıç taşıyorsa savuşturma hakkı karşılıklı iptal olur. İki kılıç = iki savuşturma.</p>
+
+                    <h3>Silahlar (Dövüşte)</h3>
+                    <p>Sadece göğüs göğse silahlar ve tabancalar kullanılır. Her savaşçının en az bir bıçağı vardır. İki silah taşıyan savaşçı bir ek saldırı zarı atar. Ağır/temel/özel silah taşıyanlar bu bonusu alamaz. Dövüş sırasında silah değiştirilemez.</p>
+
+                    <h3>Boğuşma (Çoklu Dövüş)</h3>
+                    <p>Birden fazla savaşçı tek bir düşmanla dövüşüyorsa, sayıca az olan her rakiple sırayla dövüşür. Sırayı çok olan taraf belirler. Her yeni rakiple dövüşürken bonus birikir:</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Rakip sırası</th><th>Ek SAL zarı</th><th>Ek ÇP</th></tr></thead>
+                            <tbody>
+                                <tr><td>1. rakip</td><td>—</td><td>—</td></tr>
+                                <tr><td>2. rakip</td><td>+1</td><td>+1</td></tr>
+                                <tr><td>3. rakip</td><td>+2</td><td>+2</td></tr>
+                                <tr><td>4. rakip</td><td>+3</td><td>+3</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Kovalama</h3>
+                    <p>Tüm dövüş rakipleri etkisiz hale gelirse, savaşçı anında 2" hareket edebilir. Siper arkasına geçebilir, yeni düşmanla dövüşe girebilir, engelleri cezasız aşabilir. Bu hücum sayılmaz; silah değiştirilemez.</p>
+
+                    <h3>Devrilmiş ve Sinmiş Savaşçılar (Dövüşte)</h3>
+                    <p>Göğüs göğse dövüşteki savaşçılar sinemez; sinmiş haldeyken hücuma uğrayacak olurlarsa sinme hemen sonlanır. Yere devrilmiş bir savaşçıya hücum eden (başka rakibi yoksa) onu otomatikman saf dışı bırakır.</p>
+
+                    <h3>Özel Hasar</h3>
+                    <p>Bazı silahların özel hasar kuralları, sadece hasar zarında doğrudan "saf dışı" sonucu çıktığında uygulanır. Birden fazla silah aynı anda "saf dışı" doğurursa saldıran oyuncu hangi silahın kuralının uygulanacağına karar verir.</p>
+                </div>
+            </section>
+
+            <!-- ===== LİDERLİK ===== -->
+            <section id="liderlik" class="srd-section">
+                <h2 class="section-heading">Liderlik</h2>
+                <div class="section-content">
+                    <h3>Yılgınlık Sınaması</h3>
+                    <p>Bir savaşçı devrildiğinde veya saf dışı kaldığında, 2" içindeki her dost savaşçı derhal yılgınlık sınamasından geçer. 2z6 atın. Sonuç liderliğe eşit veya düşükse başarılı — savaşmaya devam eder. Yüksekse savaşçı <strong>yılgın</strong> olur.</p>
+
+                    <h3>Yılgın Savaşçılar</h3>
+                    <p><strong>Siper alma:</strong> Yılgın haldeki savaşçı derhal 2z6" düşmandan uzağa ve sipere doğru kaçar. Uygun sığınak bulana dek her tur kaçmaya devam eder. Toparlanmak dışında hiçbir şey yapamaz.</p>
+                    <p><strong>Dövüşle karşılaşma:</strong> Yılgın bir savaşçıya hücum edilirse DVŞ becerisi 1 kabul edilir. Dövüş aşaması sonunda otomatik kopar ve siper alır.</p>
+                    <p><strong>Dövüşten kopma:</strong> Dövüş sırasında yılgın düşen savaşçı 2z6" kaçar. Sırtını döndüğü için düşmandan otomatik bir yakın dövüş isabeti alır.</p>
+                    <p><strong>Toparlanma:</strong> Toparlanma aşamasında siperde ve görülemez durumda ise liderlik sınaması yapabilir. Başarılıysa yılgınlık kalkar. Kendi tarafının sırasında yılgın düşen savaşçı o turun toparlanma aşamasında toparlanamaz.</p>
+                    <div class="info-box">
+                        <div class="info-icon">ℹ</div>
+                        <div class="info-content">
+                            <strong>Sinmiş ve yılgın:</strong> Sinmiş bir savaşçı yılgın olursa sinme otomatik kalkar ve siper alır. Yılgın savaşçılar sinmiş durumuna düşemez.<br>
+                            <strong>Devrilmiş ve yılgın:</strong> 2z6" yerine yalnızca 2" sürünerek sipere hareket eder.
+                        </div>
+                    </div>
+
+                    <h3>Bozgun</h3>
+                    <p>Timin %25 veya daha fazlası devrilmiş ya da saf dışıysa (yukarı yuvarla) bozgun sınaması yapılmalıdır. 2z6 atın. Tim liderinin liderliğinden yüksekse tim çekilir ve oyun derhal biter. Tim lideri devrilmiş veya saf dışıysa ayakta kalanlar arasındaki en yüksek liderlik değeri kullanılır.</p>
+                    <p><strong>Cesaretin Sonu:</strong> Bozgun koşulları sağlandığında oyuncu isterse gönüllü olarak başarısız sayabilir.</p>
+                </div>
+            </section>
+
+            <!-- ===== EK KURALLAR ===== -->
+            <section id="ek-kurallar" class="srd-section">
+                <h2 class="section-heading">Ek Kurallar</h2>
+                <div class="section-content">
+                    <p>Yeni oyuncuların başlangıçta bu bölümü atlaması önerilir. Deneyimli oyuncular bu kuralları oyunlarına ekleyebilirler.</p>
+
+                    <h3>Düşme</h3>
+                    <p>Bir savaşçı kenarın 1" yakınında sinerse, devrilirse veya dövüşü kaybederse öncelik sınaması yapar. Başarısızsa düşer.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Düşme mesafesi</th><th>Hasar</th></tr></thead>
+                            <tbody>
+                                <tr><td>3" veya daha az</td><td>1 yara</td></tr>
+                                <tr><td>3"-7"</td><td>z6 yara</td></tr>
+                                <tr><td>7"–10"</td><td>Yüksek Etki kuralları uygulanır</td></tr>
+                                <tr><td>10" üzeri</td><td>Otomatik saf dışı</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Atlama</h3>
+                    <p><strong>Aşağı atlama (3" veya daha az):</strong> ÖNC sınaması yap. Başarılıysa güvenle iner; her 1" düşüş hareketin ½"ine mal olur. Başarısızsa normal düşme hasarı alır.</p>
+                    <p><strong>Karşıya atlama:</strong> Savaşçıyı kenarına kadar hareket ettir, z6 at. Boşluğun genişliğine eşit veya yüksekse atlama başarılı; her 1" atlama 1" harekete mal olur. Düşükse boşluktan düşer.</p>
+
+                    <h3>Körü Kurşun</h3>
+                    <p>Iskalayan atış, yolunun dost savaşçının ½" yakınından geçiyorsa ve isabet zarında 1 geldiyse, ek z6 atın: 1 gelirse dost savaşçı vurulur.</p>
+
+                    <h3>Patlayan Silahlar</h3>
+                    <p>Güvenilmez silahların cephane sınaması sonucu 2 gelirse silah patlar — kullanıcısına silahın kuvvetinden 1 düşük kuvvette otomatik isabet verir.</p>
+
+                    <h3>Arazi Unsurlarına Saldırı</h3>
+                    <p>Kapı kırmak, yakıt borusu tahrip etmek vb. için kullanılır. Arazi unsurlarının DYN ve CAN değerleri vardır; sinmez ve bozguna uğramaz. Görevlerde belirtildiğinde veya her iki oyuncu kabul ettiğinde geçerlidir.</p>
+
+                    <h3>Korku ve Dehşet</h3>
+                    <p><strong>Korku:</strong> Korku veren düşmana hücum edilirse liderlik sınaması — başarısız olursa yılgın. Korku veren düşmana siz hücum ederseniz ve başarısız olursanız: donup kalırsınız.</p>
+                    <p><strong>Dehşet:</strong> Korku'nun güçlü hali. Ek olarak: dehşet veren yaratığın turunun başında, yaratığın 8" yakınındaki her dost savaşçı liderlik sınaması yapar.</p>
+
+                    <h3>Nefret</h3>
+                    <p>Nefret edilen düşmana karşı: tüm bozgun/korku/dehşet sınamaları liderlik 10 kabul edilerek yapılır; ilk dövüş turunda tüm saldırı zarları bir kez yeniden atılabilir; kovalama hamlesi zorunlu olarak nefret edilen düşmana yönelik kullanılmalıdır.</p>
+
+                    <h3>Cinnet</h3>
+                    <p>En yakın düşmana hücum etmek zorundadır. SAL iki katına çıkar. Savuşturamaz. Korku, dehşet ve nefretten etkilenmez. Yılgın düşerse cinnet sona erer. Turunun başında liderlik sınaması ile geçici olarak kontrol altına alınabilir.</p>
+                </div>
+            </section>
+
+            <!-- ===== CEPHANELİK ===== -->
+            <section id="cephanelik" class="srd-section">
+                <h2 class="section-heading">Cephanelik</h2>
+                <div class="section-content">
+                    <p>Bu bölüm farklı silahları, zırhları ve ekipmanları açıklar. Herşeyi ezberlemeye gerek yok — referans olarak kullan.</p>
+
+                    <h3>Silah Türleri</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Tür</th><th>Açıklama</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Dövüş silahları</strong></td><td>Yalnızca göğüs göğse dövüşte kullanılır. Atışta kullanılamaz.</td></tr>
+                                <tr><td><strong>Tabancalar</strong></td><td>Hem atış hem dövüş aşamasında kullanılabilir.</td></tr>
+                                <tr><td><strong>Temel silahlar</strong></td><td>Genellikle iki elle taşınan büyük silahlar. Atış aşamasında kullanılır.</td></tr>
+                                <tr><td><strong>Özel silahlar</strong></td><td>Temel silahlara benzer ama daha gelişmiş. Yalnızca uzmanlar kullanabilir.</td></tr>
+                                <tr><td><strong>Ağır silahlar</strong></td><td>En büyük silahlar. Yalnızca uzmanlar; yalnızca <strong>durağan</strong> haldeyken ateşlenebilir. Dövüşte dezavantaj sağlar (-1 ÇP).</td></tr>
+                                <tr><td><strong>El bombaları</strong></td><td>Elle atılan patlayıcılar. Atış aşamasında silah yerine fırlatılır.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Silah Profilleri</h3>
+                    <p><strong>Dövüş silahları profili:</strong> Erim | KUV | HSR | Kurtulma Etkeni</p>
+                    <p><strong>Erimli silahlar profili:</strong> Yakın Erim | Uzak Erim | Yakın İsabet | Uzak İsabet | KUV | HSR | Kurtulma Etkeni | Cephane Sınaması</p>
+
+                    <div class="info-box">
+                        <div class="info-icon">ℹ</div>
+                        <div class="info-content">
+                            <strong>Tam silah profilleri Tim Kur aracında mevcuttur.</strong> Bu sayfa temel silah kurallarını açıklar; her faksiyonun tam silah listesi <a href="tim-kur.html">Tim Kur</a> sayfasında bulunur.
+                        </div>
+                    </div>
+
+                    <h3>Dövüş Silahları — Temel Özellikler</h3>
+                    <p>Kuvvet değeri kullanıcının kuvvetine eklenebilir (örn. "Kull.+2") veya sabit olabilir. Hasar zarı genelde 1'dir; güçlü silahlar daha fazla verebilir. Zırh etkeni, kuvvetten gelen etkene ek olarak uygulanır.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Silah</th><th>KUV</th><th>HSR</th><th>Kurtulma E.</th><th>Özel</th></tr></thead>
+                            <tbody>
+                                <tr><td>Kılıç / Hücum bıçağı / Kama</td><td>Kullanıcı</td><td>1</td><td>—</td><td>Savuşturma</td></tr>
+                                <tr><td>Bıçak / Dövüş bıçağı</td><td>Kullanıcı</td><td>1</td><td>—</td><td>—</td></tr>
+                                <tr><td>Hızar</td><td>4</td><td>1</td><td>-2</td><td>Savuşturma, Gürültülü</td></tr>
+                                <tr><td>Keser</td><td>Kull.+1</td><td>1</td><td>—</td><td>Savuşturma</td></tr>
+                                <tr><td>Erk kılıcı</td><td>Kull.+1</td><td>1</td><td>-3</td><td>Savuşturma</td></tr>
+                                <tr><td>Erk gürzü</td><td>Kull.+2</td><td>D3</td><td>—</td><td>—</td></tr>
+                                <tr><td>Erk yumruğu / Erk pençesi</td><td>Kull.+3</td><td>D3</td><td>-3</td><td>—</td></tr>
+                                <tr><td>Erk baltası</td><td>Kull.+3</td><td>1</td><td>—</td><td>İkili (iki elde +1 KUV)</td></tr>
+                                <tr><td>Kocakeser</td><td>Kull.+2</td><td>1</td><td>—</td><td>Çift el, Ezici, Eşitlik cezası</td></tr>
+                                <tr><td>Çekiç</td><td>Kull.+4</td><td>D3</td><td>—</td><td>Yıkıcı</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Temel Menzilli Silahlar</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Silah</th><th>Erim Y/U</th><th>İsabet Y/U</th><th>KUV</th><th>HSR</th><th>Kurt.E.</th><th>Ceph.S.</th></tr></thead>
+                            <tbody>
+                                <tr><td>Temir tabancası</td><td>0-8" / 8-16"</td><td>+2 / —</td><td>4</td><td>1</td><td>-1</td><td>5+</td></tr>
+                                <tr><td>Lazer tabancası</td><td>0-8" / 8-16"</td><td>+1 / —</td><td>3</td><td>1</td><td>—</td><td>3+</td></tr>
+                                <tr><td>Patlangaç</td><td>0-8" / 8-16"</td><td>+1 / -1</td><td>4</td><td>1</td><td>—</td><td>5+</td></tr>
+                                <tr><td>Temren tüfeği</td><td>0-12" / 12-24"</td><td>+1 / —</td><td>4</td><td>1</td><td>-1</td><td>5+</td></tr>
+                                <tr><td>Lazer tüfeği</td><td>0-12" / 12-24"</td><td>+1 / —</td><td>3</td><td>1</td><td>—</td><td>3+</td></tr>
+                                <tr><td>Atgaç</td><td>0-12" / 12-24"</td><td>+1 / —</td><td>4</td><td>1</td><td>-1</td><td>5+</td></tr>
+                                <tr><td>Nişancı tüfeği</td><td>0-18" / 18-36"</td><td>-1 / —</td><td>4</td><td>1</td><td>-1</td><td>7+</td></tr>
+                                <tr><td>Çifte temren</td><td>0-12" / 12-24"</td><td>+1 / —</td><td>4</td><td>1</td><td>-1</td><td>5+</td></tr>
+                                <tr><td>Alev makinesi</td><td>Şablon / —</td><td>— / —</td><td>4</td><td>1</td><td>-2</td><td>5+</td></tr>
+                                <tr><td>Isıl agitör</td><td>0-6" / 6-12"</td><td>+1 / —</td><td>8</td><td>D6</td><td>-5</td><td>5+</td></tr>
+                                <tr><td>Plazma tüfeği (düşük)</td><td>0-6" / 6-12"</td><td>+1 / —</td><td>4</td><td>1</td><td>-1</td><td>7+</td></tr>
+                                <tr><td>Ağır temren</td><td>0-20" / 20-40"</td><td>— / —</td><td>5</td><td>D3</td><td>-2</td><td>5+</td></tr>
+                                <tr><td>Roketatar (zırh delici)</td><td>0-20" / 20-72"</td><td>— / —</td><td>8</td><td>D6</td><td>-5</td><td>7+</td></tr>
+                                <tr><td>Roketatar (parça tesirli)</td><td>0-20" / 20-72"</td><td>— / —</td><td>4</td><td>1</td><td>-2</td><td>7+</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>El Bombaları</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Bomba</th><th>KUV</th><th>HSR</th><th>Kurtulma E.</th><th>Özel</th></tr></thead>
+                            <tbody>
+                                <tr><td>Parça tesirli bomba</td><td>3</td><td>1</td><td>—</td><td>Büyük patlama</td></tr>
+                                <tr><td>Zırh delici bomba</td><td>6</td><td>z6</td><td>-3</td><td>Hantal (-1 isabet), Tahribat</td></tr>
+                                <tr><td>Isıl bomba</td><td>8</td><td>2z6</td><td>-5</td><td>Sadece yıkım için</td></tr>
+                                <tr><td>Tahrip kalıbı</td><td>8</td><td>2z6</td><td>-5</td><td>Büyük patlama, sadece yıkım</td></tr>
+                                <tr><td>Cerahat bombası</td><td>3</td><td>1</td><td>-1</td><td>Büyük patlama, Zehirli</td></tr>
+                                <tr><td>Plazma bombası</td><td>4</td><td>1</td><td>-2</td><td>Küçük patlama</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Zırh</h3>
+                    <p>Bir savaşçı yalnızca tek bir zırh kuşanabilir.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Zırh</th><th>Sınama</th><th>Özel</th></tr></thead>
+                            <tbody>
+                                <tr><td>Deri zırh / Basit zırh</td><td>6+</td><td>—</td></tr>
+                                <tr><td>Flak zırh / Madenci tulumu</td><td>6+ (şablon 5+)</td><td>—</td></tr>
+                                <tr><td>Örgü zırh</td><td>5+</td><td>—</td></tr>
+                                <tr><td>İzci zırhı / Karakabuk zırh</td><td>4+</td><td>Karakabuk: -1 ÖNC</td></tr>
+                                <tr><td>Keşif zırhı / Cephe zırhı</td><td>4-5+</td><td>—</td></tr>
+                                <tr><td>Erk zırhı / Hayalet zırh</td><td>3+</td><td>Hayalet: 6+ dokunulmazlık</td></tr>
+                                <tr><td>Dretnot zırhı</td><td>3+ (iki zar topla)</td><td>5+ dokunulmazlık, Sarsılmaz</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Özel Donanım</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Donanım</th><th>Etki</th></tr></thead>
+                            <tbody>
+                                <tr><td>Yedek mühimmat</td><td>İlk başarısız cephane sınaması yeniden atılabilir</td></tr>
+                                <tr><td>Kırmızı nokta lazer nişangâh</td><td>İsabet zarına +1. Hedef 90° içindeyse 6+ dokunulmazlık kazanır.</td></tr>
+                                <tr><td>Tüfek dürbünü</td><td>Durağan halde ateş ederken uzak erim kısa erim kadar uzar</td></tr>
+                                <tr><td>Kamuflaj takımı</td><td>Hedefleyen atışların azami eriminden 4" çıkarılır</td></tr>
+                                <tr><td>Tutunma koşumu</td><td>Sabitlenince kenar yakınında düşme sınaması gerekmez</td></tr>
+                                <tr><td>Foto-vizör</td><td>Durağanken siper cezası 1 azalır</td></tr>
+                                <tr><td>Kaba kalkan</td><td>Dövüşte fazladan SAL zarı; 5+ dokunulmazlık</td></tr>
+                                <tr><td>Kalkan duvarı</td><td>Önden gelen atışlara karşı her zaman siperde sayılır</td></tr>
+                                <tr><td>Enerji kalkanı</td><td>3+ dokunulmazlık</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Mühimmat ve Dürbünler</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Mühimmat</th><th>Etki</th></tr></thead>
+                            <tbody>
+                                <tr><td>Azap temiri</td><td>İsabet ettiğinde z3 yara verir. Silah güvenilmez olur.</td></tr>
+                                <tr><td>Cehennem temiri</td><td>Özel profil ile ateşlenir; mühimmat tükenince standart devam eder.</td></tr>
+                                <tr><td>Toksik mermi</td><td>İsabetlerde yaralama zarı gerekmez; otomatik 1 yara. Özel hasar tablosu.</td></tr>
+                                <tr><td>Yoğunlaştırılmış lazer güç ünitesi</td><td>+1 KUV; cephane sınaması 6+ olur.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TİM OLUŞTURMAK ===== -->
+            <section id="tim-olusturma" class="srd-section">
+                <h2 class="section-heading">İnfaz Timi Oluşturmak</h2>
+                <div class="section-content">
+                    <p>Her oyuncu savaşa girmeden önce kendi timini kurar: bir komutan, savaşçılar ve teçhizat.</p>
+
+                    <h3>Puan Bütçesi</h3>
+                    <p>Bir tim <strong>1000 puan</strong> ile kurulur. Bu bütçeyle savaşçı satın alınır, ardından her savaşçıya teçhizat eklenir. Harcanmayan puanlar kaybolur; sonraki göreve taşınmaz. <a href="tim-kur.html">Tim Kur aracı</a> bu toplamı otomatik hesaplar.</p>
+
+                    <h3>Tim Büyüklüğü</h3>
+                    <ul>
+                        <li><strong>Asgari:</strong> 3 savaşçı</li>
+                        <li><strong>Azami:</strong> Tarafa özel sınır (varsayılan 10)</li>
+                    </ul>
+
+                    <h3>Roller</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Rol</th><th>Miktar</th><th>Açıklama</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Komutan</strong></td><td>Tam olarak 1</td><td>Oyuncunun vücut bulmuş hali. 2" içinde dost varmış gibi sayılır. 6" içindekilere liderlik ve öncelik bonusu sağlar. Devrilmiş veya yılgın olursa bu etkiler kalkar.</td></tr>
+                                <tr><td><strong>Er</strong></td><td>Sınırsız</td><td>Deneyimli ve güvenilir savaşçılar. Timin büyük çoğunluğunu oluşturur.</td></tr>
+                                <tr><td><strong>Uzman</strong></td><td>Varsayılan azami 2</td><td>Ağır veya teknik silahlar taşır. Özel silahlar ve ağır silahlar yalnızca uzmanlar kullanabilir.</td></tr>
+                                <tr><td><strong>Acemi</strong></td><td>Timin yarısından fazlası olamaz</td><td>Taze katılmış savaşçılar. Beceri kazanamaz. 3 görev tamamladığında er'e terfi eder.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Savaşçıları Silahlandırma</h3>
+                    <ul>
+                        <li>Bir savaşçı aynı anda yalnızca bir ağır silah taşıyabilir</li>
+                        <li>Bıçaklar ve el bombaları modelde görünmek zorunda değildir</li>
+                        <li>Diğer tüm silahlar <strong>modelde görünür</strong> olmalıdır</li>
+                        <li>El bombası satın alındığında görev boyunca yetecek miktar taşınmış sayılır</li>
+                    </ul>
+
+                    <h3>Tim Kütüğü</h3>
+                    <p>Kütük, timinizin kalıcı kaydıdır; her savaşçının istatistiklerini, teçhizatını, kazandığı becerileri ve harekât ilerlemesini üzerinde tutar. Timinize ve her savaşçınıza bir isim verin. Bir alt-taraf seçmeniz gerekecek — bu seçim, savaşçıların zamanla hangi beceri havuzlarından geliştiğini belirler.</p>
+
+                    <h3>Özel Ajanlar</h3>
+                    <p>Bir infaz timine görev süresince bir veya daha fazla özel ajan katılabilir. Her özel ajan için 1 prometyum stoğu verilmelidir. Görevden sonra özel ajan ayrılır. Özel ajan infaz timinin azami boyutuna dahil edilmez.</p>
+                </div>
+            </section>
+
+            <!-- ===== GÖREVLER ===== -->
+            <section id="gorevler" class="srd-section">
+                <h2 class="section-heading">Görevler</h2>
+                <div class="section-content">
+                    <p>Rakibinizle hangi görevi oynayacağınıza birlikte karar verebilir veya aşağıdaki tabloyla rastgele belirleyebilirsiniz.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>z6</th><th>Görev</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td>Karşılaşma</td></tr>
+                                <tr><td>2</td><td>Yağma</td></tr>
+                                <tr><td>3</td><td>Vurkaç</td></tr>
+                                <tr><td>4</td><td>Baskın</td></tr>
+                                <tr><td>5</td><td>Pusu</td></tr>
+                                <tr><td>6</td><td>Kurtarma (yalnızca esir varsa)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Karşılaşma</h3>
+                    <p>İki tim Prometyum Ağı'nda rastlaşır. Amaç rakip timi alandan sürmektir. Bir tim bozgun sınamasını kaybederse veya çekilmeyi kabul ederse oyun sona erer. <strong>Özel:</strong> Kazanan tim en az 3 düşman saf dışı bırakırsa ve kendi kayıplarının üç katı kayıp verdirirse, fazladan 1 prometyum stoğu kazanır.</p>
+
+                    <h3>Yağma</h3>
+                    <p>İki tim gizli depo ve yakıt stoklarını aramaya gelmiştir. Z6 atılarak Ganimet pulları sayısı belirlenir; pullar alan ortasına yerleştirilir. Savaşçılar üzerinden geçerek pulları toplar. Pulların yarısından fazlasını toplayan ve taşıyanlar kendi kenarlarına 8" içindeyken turu başlatan tim kazanır. <strong>Canavar İhtimali:</strong> Her turun başında 6 gelirse, en yalıtılmış savaşçıya bilinmezden saldırı!</p>
+
+                    <h3>Vurkaç</h3>
+                    <p>Bir tim rakip karakoluna ani baskın düzenler; amaç zarar verip sıvışmaktır. Hedef gizlice z6 ile belirlenir (Patlatma, Suikast, Etkisiz Hâle Getirme, Şok Taktiği, Yağma, Seçim). Saldıranlar %50 kayıp verene kadar bozgun sınaması yapmaz.</p>
+
+                    <h3>Baskın</h3>
+                    <p>Baskıncılar nöbetçileri atlatmalı, Girişi yok etmeli ve kaçmalıdır. Alarm çalana kadar nöbetçiler kısıtlı hareket eder; alarm çaldıktan sonra takviyeler gelir. Giriş dayanım 6, 3 yara ile yok edilir.</p>
+
+                    <h3>Pusu</h3>
+                    <p>Bir tim diğerine tuzak kurmuştur. Pusucu tim gizlenmiş halde yerleşir; hedef birden fazla grupta yerleşir. Bir grup rastgele pusucu yanına konabilir! Bir tim bozgun sınamasını kaybederse veya çekilirse, diğer tim kazanır.</p>
+
+                    <h3>Kurtarma</h3>
+                    <p>Yalnızca bir tim üyeniz esir alınmışsa oynanabilir. Esir sahibi her zaman bu görevi oynamayı seçebilir. Baskın kuralları geçerlidir. Tüm saldıranlar ve kurtarılan esirler saldıran kenarından çıkarsa saldıran kazanır.</p>
+                </div>
+            </section>
+
+            <!-- ===== HAREKÂT ===== -->
+            <section id="harakat" class="srd-section">
+                <h2 class="section-heading">Harekât</h2>
+                <div class="section-content">
+                    <p>Tek bir görev oynayıp bırakabilirsiniz. Ama harekât oynamak, timinizin kendi hikâyesini yazmasını sağlar: yaralar, terfiler, kayıplar ve nihayetinde bir bölgenin kontrolü için verilen son mücadele.</p>
+
+                    <h3>Prometyum Ağı'nda Av</h3>
+                    <p>Her görevi seçtikten sonra her iki oyuncu da 2z6 atarak alt olaylar tablosundan sonuçlarını belirler.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>2z6</th><th>Alt Olay</th></tr></thead>
+                            <tbody>
+                                <tr><td>2</td><td><strong>Kaybolmuş:</strong> Lider hariç rastgele bir savaşçı bu görevden çıkarılır.</td></tr>
+                                <tr><td>3</td><td><strong>Zehirli Kül:</strong> Görev sonunda devrilmiş savaşçılar 1-4'te oyun dışı kalır.</td></tr>
+                                <tr><td>4</td><td><strong>Ani Çarpışma:</strong> Bir düşman saf dışı kaldıktan sonra bozgun sınamasını bilerek kaybedebilir.</td></tr>
+                                <tr><td>5</td><td><strong>Kaygan Zemin:</strong> Koşan/hareket eden her savaşçı için zar atılır; 1 gelirse hareketinin sonunda devrilir.</td></tr>
+                                <tr><td>6</td><td><strong>Gizli Stok:</strong> Görevi kazanan Takviye/Donatım için 100 ek puan kazanır.</td></tr>
+                                <tr><td>7</td><td><strong>Sakin Geçti:</strong> Alt olay yok.</td></tr>
+                                <tr><td>8</td><td><strong>Kritik Görev:</strong> Kazanan prometyum stoğu zarını yeniden atabilir.</td></tr>
+                                <tr><td>9</td><td><strong>Yılmaz:</strong> Bozgun sınamasından 1 çıkarılabilir.</td></tr>
+                                <tr><td>10</td><td><strong>Kaos ve Korku:</strong> Tüm liderlik sınamalarına +1.</td></tr>
+                                <tr><td>11</td><td><strong>Kanlı Husumet:</strong> Her timden rastgele birer savaşçı birbirinden nefret eder (kalıcı).</td></tr>
+                                <tr><td>12</td><td><strong>Dost Toprak:</strong> Ağır Hasar zarlarında 1-3 sonuçlarını yeniden atabilir.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Görev Sonrası: Savaşın Bedeli</h3>
+                    <p>Her görevden sonra sırayla:</p>
+                    <ol>
+                        <li><strong>Yaralıları Topla:</strong> Devrilmiş savaşçı için zar at — 4-6 toparlanır, 1-3 Ağır Hasar zarı atılır</li>
+                        <li><strong>Prometyum Stoğu Topla:</strong> Kaybeden/berabere kalan tim 1 stok; kazanan tim z3 stok kazanır</li>
+                        <li><strong>Geliştir:</strong> Saf dışı kalmamış, acemi olmayan bir savaşçı için Gelişim tablosunda zar at</li>
+                        <li><strong>Terfi:</strong> Saf dışı kalmamış her acemi için "Görev Tamamlama" işareti. Üç işarette acemi → er olur</li>
+                        <li><strong>İkmal:</strong> Komutan hayattaysa şu eylemlerden birini seç: Takviye (100 puana kadar yeni savaşçı) veya Donatım (100 puana kadar yeni teçhizat). Bir prometyum stoğu feda ederek bütçeyi 100 puan artırabilirsin.</li>
+                    </ol>
+
+                    <h3>Ağır Hasar</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>z6</th><th>Sonuç</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td><strong>Ölü... veya Daha Beteri:</strong> z6 at. 1-3 = ölü. 4+ = rakip tarafından esir alındı (Kurtarma görevi!)</td></tr>
+                                <tr><td>2</td><td><strong>Kafa Yarası:</strong> Cinnet kazanır. Sonraki görevi kaçırır.</td></tr>
+                                <tr><td>3</td><td><strong>Acılı İyileşme:</strong> Onu saf dışı bırakan timden bir savaşçıya nefret besler. Sonraki görevi kaçırır.</td></tr>
+                                <tr><td>4-5</td><td><strong>Tam İyileşme:</strong> Sonraki göreve hazır.</td></tr>
+                                <tr><td>6</td><td><strong>Öldürmeyen Güçlendirir:</strong> Hazır. Ayrıca bir gelişim zarı at.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Gelişim Tablosu</h3>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>2z6</th><th>Sonuç</th></tr></thead>
+                            <tbody>
+                                <tr><td>2-3</td><td><strong>Dayanıklı:</strong> +1 DYN veya +1 CAN</td></tr>
+                                <tr><td>4</td><td><strong>Azılı:</strong> +1 KUV veya +1 SAL</td></tr>
+                                <tr><td>5-9</td><td><strong>Yetenekli:</strong> Yeni beceri kazan</td></tr>
+                                <tr><td>10</td><td><strong>Çevik:</strong> +1 HRK veya +1 ÖNC</td></tr>
+                                <tr><td>11-12</td><td><strong>Ölümcül:</strong> +1 DVŞ veya +1 ATŞ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Harekâtın Sonu: Zafer</h3>
+                    <p>Harekâtta galip gelmek için önce <strong>15 prometyum stoğu</strong> tolanması gerekir. Sonra bir görev daha kazanılırsa bölgenin hakimiyeti alınır ve harekât kazanılır. Harekâtı kısaltmak veya uzatmak için bu sayı değiştirilebilir.</p>
+
+                    <h3>Beceri Tabloları</h3>
+                    <p>Savaşçılar Çatışma, Vahşet, Gerilla, Çeviklik, Güç veya Nişancılık beceri tablolarından (tarafa ve role göre) beceri kazanır. Acemiler beceri kazanamaz.</p>
+                    <div class="table-wrapper">
+                        <table class="rules-table">
+                            <thead><tr><th>Tablo</th><th>Örnek Beceriler</th></tr></thead>
+                            <tbody>
+                                <tr><td>Çatışma</td><td>Dövüş ustası, Silah düşürme, Aldatmaca, Engelleme, Karşı saldırı, Yana kaçış</td></tr>
+                                <tr><td>Vahşet</td><td>Başıbozuk, Atılgan, Demir irade, Kötü nam, Çelik sinir, Yiğit</td></tr>
+                                <tr><td>Gerilla</td><td>Cebeci, Yağmacı, Avcı, Sıhhiye, Yazgısı belli, Sağ kalan</td></tr>
+                                <tr><td>Çeviklik</td><td>Kedi gibi, Sıyrılma, Geri çekilme, Büyük sıçrama, Bomba yakalama, Depar</td></tr>
+                                <tr><td>Güç</td><td>Perdeleme, İri yapılı, Ezici darbe, Kafa atma, Savurma, Demir çene</td></tr>
+                                <tr><td>Nişancılık</td><td>Keskin atış, Hızlı atış, Silahşör, Desteksiz atış, Nişancı, Mühimmat köpeği</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Ayrıca gizlilik becerileri tablosu bulunur (Pusu, Dalış, Kaçış ustası, Sıvışma, Sızma, Sinsi yaklaşma) ve her faksiyonun özel kuralları vardır.</p>
+                </div>
+            </section>
+
+            <footer class="main-footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-brand">
+                            <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                            <p class="footer-tagline">Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.</p>
+                        </div>
+                        <div class="footer-links">
+                            <div class="footer-column">
+                                <h4 class="footer-heading">Kaynaklar</h4>
+                                <a href="mahser.html">Mahşer (Lore)</a>
+                                <a href="srd.html">Kurallar (SRD)</a>
+                                <a href="tim-kur.html">Tim Kur</a>
+                                <a href="kaynaklar.html">Kaynaklar</a>
+                                <a href="terimce.html">Terimce</a>
+                            </div>
+                            <div class="footer-column">
+                                <h4 class="footer-heading">Topluluk</h4>
+                                <a href="https://discord.gg/x9WjgdqbX3">Discord</a>
+                                <a href="https://www.reddit.com/r/Warhammer40KTR/">Reddit</a>
+                                <a href="https://www.youtube.com/@savasmasasi">YouTube</a>
+                                <a href="https://github.com/savasmasasi/infaztimi">GitHub</a>
+                            </div>
+                            <div class="footer-column">
+                                <h4 class="footer-heading">Hakkında</h4>
+                                <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.tr">Lisans (CC0)</a>
+                                <a href="#">Katkıda Bulunun</a>
+                                <a href="mailto:savasmasasi@gmail.com">İletişim</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler Games Workshop Ltd.'nin ticari markalarıdır.</p>
+                        <p class="footer-license"><strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Tüm illüstrasyonlar <a href="https://www.patreon.com/c/brushray/posts?filters%5Btag%5D=warhammer40k" target="_blank" rel="noopener">Dmitry Brushray</a>.</p>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="app.js"></script>
+            <script src="srd-app.js"></script>
+        </main>
+    </div>
+</body>
+</html>

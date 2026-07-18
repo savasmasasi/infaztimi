@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Kur - 39,000: İnfaz Timi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .builder-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .builder-header {
+            margin-bottom: 2.5rem;
+            padding-top: 1rem;
+            border-top: 4px solid var(--ember);
+            border-bottom: 1px solid var(--ink-rule);
+            padding-bottom: 0.75rem;
+        }
+        .builder-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .builder-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--paper-dim);
+        }
+        .builder-notice {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.05em;
+            color: var(--paper-ghost);
+            margin-top: 0.6rem;
+            border-left: 2px solid var(--ink-rule);
+            padding-left: 0.6rem;
+        }
+
+        /* ---- Layout ---- */
+        .builder-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            border: 2px solid var(--ink-rule);
+        }
+        .faction-selector {
+            background: var(--ink-raised);
+            border-right: 4px solid var(--ember);
+            padding: 1.25rem 1rem;
+        }
+        .faction-title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ink-edge);
+        }
+        .faction-button {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.75rem;
+            margin-bottom: 2px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--ink-edge);
+            color: var(--paper-ghost);
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+            text-align: left;
+        }
+        .faction-button::before {
+            content: '//';
+            font-size: 0.55rem;
+            color: var(--ink-rule);
+            flex-shrink: 0;
+            transition: color 0.12s;
+        }
+        .faction-button:hover {
+            background: var(--ink-edge);
+            color: var(--paper);
+        }
+        .faction-button:hover::before { color: var(--ember); }
+        .faction-button.active {
+            background: var(--ember-trace);
+            color: var(--ember);
+            border-left: 3px solid var(--ember);
+            padding-left: calc(0.75rem - 3px);
+        }
+        .faction-button.active::before { color: var(--ember); }
+        .faction-button.is-locked {
+            opacity: 0.4;
+        }
+        .faction-button.is-locked:hover {
+            opacity: 0.7;
+        }
+        .roster-faction-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ember);
+            font-weight: normal;
+        }
+
+        .roster-area {
+            background: var(--ink);
+            padding: 1.5rem 2rem;
+            min-height: 400px;
+        }
+        .roster-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--paper-ghost);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .roster-warning {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.03em;
+            color: var(--ember);
+            background: var(--ember-trace);
+            border: 1px solid var(--ember-rule);
+            border-left: 4px solid var(--ember);
+            padding: 0.6rem 0.9rem;
+            margin-top: 1.25rem;
+        }
+
+        /* ---- Fighter cards in roster ---- */
+        .fighter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .fighter-card {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-rule);
+            border-left: 4px solid var(--ember);
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .fighter-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+            margin-bottom: 0.3rem;
+        }
+        .fighter-role-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ember);
+            border: 1px solid var(--ember-rule);
+            padding: 0.05rem 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .fighter-stats {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--paper-ghost);
+            letter-spacing: 0.04em;
+            margin-bottom: 0.4rem;
+        }
+        .fighter-gear-line {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: var(--paper-dim);
+            font-style: italic;
+        }
+        .fighter-extras {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--paper-ghost);
+            margin-top: 0.3rem;
+        }
+        .fighter-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+        .fighter-cost {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--ember);
+            line-height: 1;
+        }
+        .remove-button {
+            font-family: var(--font-display);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.85rem;
+            background: transparent;
+            border: 2px solid var(--ink-rule);
+            color: var(--paper-ghost);
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+            clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+        }
+        .remove-button:hover {
+            background: var(--ember-trace);
+            border-color: var(--ember-rule);
+            color: var(--ember);
+        }
+
+        .roster-summary {
+            background: var(--ink-raised);
+            border: 2px solid var(--ink-rule);
+            border-top: 4px solid var(--ember);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .summary-stat {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: var(--white-cold);
+            line-height: 1;
+        }
+        .summary-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--paper-ghost);
+            margin-bottom: 0.2rem;
+        }
+        .summary-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .export-button, .reset-button {
+            font-family: var(--font-display);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.7rem 1.6rem;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+        }
+        .export-button {
+            background: var(--ember);
+            color: var(--white-cold);
+            border: 2px solid var(--ember);
+        }
+        .export-button:hover { background: var(--ember-dim); border-color: var(--ember-dim); }
+        .export-button:disabled {
+            background: var(--ink-rule);
+            border-color: var(--ink-rule);
+            color: var(--paper-ghost);
+            cursor: not-allowed;
+        }
+        .export-button:disabled:hover { background: var(--ink-rule); border-color: var(--ink-rule); }
+        .reset-button {
+            background: transparent;
+            color: var(--paper-ghost);
+            border: 2px solid var(--ink-rule);
+        }
+        .reset-button:hover { color: var(--ember); border-color: var(--ember-rule); }
+
+        /* ---- Available fighters / recruitment ---- */
+        .section-heading-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .composition-rules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .composition-pill {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            padding: 0.3rem 0.65rem;
+            border: 1px solid var(--ink-rule);
+            color: var(--paper-ghost);
+            background: var(--ink-raised);
+        }
+        .composition-pill.is-full {
+            border-color: var(--ember-rule);
+            color: var(--ember);
+        }
+        .available-fighters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1px;
+            background: var(--ink-rule);
+        }
+        .available-fighter {
+            background: var(--ink);
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: background 0.15s;
+            position: relative;
+        }
+        .available-fighter::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--ember);
+            transition: height 0.15s;
+        }
+        .available-fighter:hover { background: var(--ink-raised); }
+        .available-fighter:hover::before { height: 100%; }
+        .available-fighter.is-selected { background: var(--ember-trace); }
+        .available-fighter.is-selected::before { height: 100%; }
+        .available-fighter.is-disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+        .available-fighter.is-disabled:hover { background: var(--ink); }
+        .available-fighter.is-disabled:hover::before { height: 0; }
+        .disabled-reason {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--ember);
+            margin-top: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+        .available-fighter h4 {
+            font-family: var(--font-display) !important;
+            font-size: 1.05rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white-cold) !important;
+            margin-bottom: 0.3rem !important;
+        }
+        .available-fighter .role-tag {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 0.4rem;
+        }
+        .available-fighter .stats-line {
+            font-family: var(--font-mono);
+            font-size: 0.63rem;
+            color: var(--paper-ghost);
+            letter-spacing: 0.02em;
+            margin-bottom: 0.4rem;
+        }
+        .available-fighter .cost {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--ember);
+            letter-spacing: 0.04em;
+        }
+
+        /* ---- Gear picker (appears once a fighter type is chosen) ---- */
+        .gear-picker {
+            background: var(--ink-raised);
+            border: 2px solid var(--ink-rule);
+            border-left: 4px solid var(--ember);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .gear-picker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--ink-edge);
+        }
+        .gear-picker-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+        }
+        .gear-picker-base {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--paper-ghost);
+        }
+        .gear-category {
+            margin-bottom: 1rem;
+        }
+        .gear-category-label {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 0.4rem;
+        }
+        .gear-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .gear-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            padding: 0.35rem 0.65rem;
+            background: var(--ink);
+            border: 1px solid var(--ink-rule);
+            color: var(--paper-ghost);
+            cursor: pointer;
+            transition: border-color 0.12s, color 0.12s, background 0.12s;
+        }
+        .gear-chip:hover {
+            border-color: var(--ember-rule);
+            color: var(--paper);
+        }
+        .gear-chip.is-active {
+            background: var(--ember-trace);
+            border-color: var(--ember);
+            color: var(--ember);
+        }
+        .gear-chip .gear-cost {
+            color: var(--paper-ghost);
+            font-size: 0.62rem;
+        }
+        .gear-chip.is-active .gear-cost { color: var(--ember); }
+        .gear-confirm-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--ink-edge);
+        }
+        .gear-running-total {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--paper-dim);
+        }
+        .gear-running-total strong {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--ember);
+        }
+        .add-fighter-button {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+            background: var(--ember);
+            color: var(--white-cold);
+            border: 2px solid var(--ember);
+            cursor: pointer;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .add-fighter-button:hover { background: var(--ember-dim); border-color: var(--ember-dim); }
+
+        @media (max-width: 768px) {
+            .builder-grid { grid-template-columns: 1fr; }
+            .faction-selector { border-right: none; border-bottom: 4px solid var(--ember); }
+            .fighter-card { flex-direction: column; align-items: stretch; }
+            .fighter-side { align-items: flex-start; flex-direction: row; justify-content: space-between; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link">Mahşer</a>
+                <a href="srd.html" class="nav-link">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link active">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="builder-container">
+        <div class="builder-header">
+            <h1 class="builder-title">TİM KUR</h1>
+            <p class="builder-subtitle">İnfaz timini oluştur, savaşçı ekle, puanları hesapla.</p>
+            <p class="builder-notice">Bu sayfa tamamen tarayıcında çalışır — internet bağlantısı veya sunucu gerektirmez. Tim listen sadece bu sekme açıkken hafızada tutulur, kapatmadan önce dışa aktarmayı unutma.</p>
+        </div>
+
+        <div class="builder-grid">
+            <div class="faction-selector" id="factionSelector">
+                <h2 class="faction-title">Faksiyon Seç</h2>
+                <!-- faction buttons injected by JS -->
+            </div>
+
+            <div class="roster-area">
+                <h2 class="section-heading" style="font-size:1rem; padding:0.4rem 0; margin-bottom:1rem;">Tim Listesi <span id="rosterFactionTag" class="roster-faction-tag"></span></h2>
+                <div id="rosterContent">
+                    <div class="roster-empty">
+                        <p>Henüz savaşçı eklemedin. Faksiyon seç ve savaşçı ekle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="recruitmentArea"></div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                    <p class="footer-tagline">Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Kaynaklar</h4>
+                        <a href="mahser.html">Mahşer (Lore)</a>
+                        <a href="srd.html">Kurallar (SRD)</a>
+                        <a href="39k-infaz-timi.pdf">PDF İndir</a>
+                        <a href="tim-kur.html">Tim Kur</a>
+                        <a href="kaynaklar.html">Minyatürler & STL</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Topluluk</h4>
+                        <a href="https://discord.gg/x9WjgdqbX3">Discord</a>
+                        <a href="https://www.reddit.com/r/Warhammer40KTR/">Reddit</a>
+                        <a href="https://www.youtube.com/@savasmasasi">YouTube</a>
+                        <a href="https://github.com/savasmasasi/infaztimi">GitHub</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Hakkında</h4>
+                        <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.tr">Lisans (CC0)</a>
+                        <a href="#">Katkıda Bulunun</a>
+                        <a href="mailto:savasmasasi@gmail.com">İletişim</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler Games Workshop Ltd.'nin ticari markalarıdır.</p>
+                <p class="footer-license"><strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Tüm illüstrasyonlar <a href="https://www.patreon.com/c/brushray/posts?filters%5Btag%5D=warhammer40k" target="_blank" rel="noopener">Dmitry Brushray</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="tim-kur-data.js"></script>
+    <script src="tim-kur-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

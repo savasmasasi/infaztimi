@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terimce - 39,000: İnfaz Timi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .terimce-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .terimce-header {
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+            border-top: 4px solid var(--ember);
+            border-bottom: 1px solid var(--ink-rule);
+            padding-bottom: 0.75rem;
+        }
+        .terimce-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .terimce-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--paper-dim);
+        }
+        .intro-block {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--paper-dim);
+            margin-bottom: 2.5rem;
+        }
+        .intro-block p { margin-bottom: 1rem; }
+        .intro-block strong { color: var(--paper); font-weight: 700; }
+
+        .toc-box {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-rule);
+            border-left: 4px solid var(--ember);
+            padding: 1rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .toc-box-title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 0.6rem;
+        }
+        .toc-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc-list a {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--paper-dim);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--ink-rule);
+        }
+        .toc-list a:hover { color: var(--ember); border-color: var(--ember-rule); }
+
+        .terim-section {
+            margin-bottom: 3.5rem;
+        }
+        .terim-section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+            border-bottom: 2px solid var(--ink-rule);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .terim-section-note {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--paper-ghost);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+        .status-pill {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border: 1px solid var(--ink-rule);
+            color: var(--paper-ghost);
+            margin-left: 0.6rem;
+            vertical-align: middle;
+            border-radius: 2px;
+        }
+        .status-pill.is-done { color: var(--ember); border-color: var(--ember-rule); }
+        .status-pill.is-pending { color: var(--paper-ghost); border-color: var(--ink-rule); }
+
+        table.terim-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+        }
+        table.terim-table th {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ember);
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 2px solid var(--ink-rule);
+        }
+        table.terim-table td {
+            padding: 0.55rem 0.75rem;
+            border-bottom: 1px solid var(--ink-edge);
+            color: var(--paper);
+            vertical-align: top;
+        }
+        table.terim-table tr:hover td { background: var(--ink-raised); }
+        table.terim-table td.col-source {
+            color: var(--paper-ghost);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        table.terim-table td.col-tr {
+            font-weight: 700;
+            color: var(--white-cold);
+            white-space: nowrap;
+        }
+        table.terim-table td.col-why {
+            color: var(--paper-dim);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+        table.terim-table td.empty-cell {
+            color: var(--ink-rule);
+        }
+
+        .abbr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--ink-rule);
+            margin-bottom: 0.5rem;
+        }
+        .abbr-item {
+            background: var(--ink);
+            padding: 0.85rem 1rem;
+        }
+        .abbr-item .abbr {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ember);
+        }
+        .abbr-item .full-tr {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white-cold);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .abbr-item .full-en {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--paper-ghost);
+        }
+
+        @media (max-width: 600px) {
+            table.terim-table { font-size: 0.8rem; }
+            table.terim-table td.col-why { display: none; }
+            table.terim-table th:last-child { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link">Mahşer</a>
+                <a href="srd.html" class="nav-link">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="terimce-container">
+        <div class="terimce-header">
+            <h1 class="terimce-title">TERİMCE</h1>
+            <p class="terimce-subtitle">İngilizce Warhammer 40,000 terimleri ile 39,000: İnfaz Timi'nin Türkçe karşılıkları — ve seçim nedenleri.</p>
+        </div>
+
+        <div class="intro-block">
+            <p>Bu sayfa, projede kullanılan Türkçe terminolojinin tek referans noktasıdır. Amaç sadece "çeviri" değil —
+            <strong>neden o çevirinin seçildiğini</strong> de kayda geçirmek. Bazı terimler doğrudan çeviri (örn. "Heavy
+            Weapon" → "Ağır Silah"), bazıları kasıtlı yerelleştirme (örn. "Armageddon" → "Mahşer"), bazıları da oyun
+            mekaniğini netleştirmek için orijinalinden bilerek ayrıştırılmış (örn. "yılgınlık sınaması" ile "bozgun sınaması"nın
+            ayrı tutulması). Bu sayfa hepsini bir araya getiriyor.</p>
+            <p>Taraf ve mekan isimleri büyük ölçüde yerleşik; aşağıdaki tablolarda <strong>"Neden?"</strong> sütunu
+            doldurulmuş olanlar zaten karara bağlanmış demektir. Boş bırakılan satırlar ve hücreler henüz çevrilmemiş, gerekçesi netleşmemiş ya da yazmaya üşenmişim demektir.</p>
+        </div>
+
+        <div class="toc-box">
+            <div class="toc-box-title">Bu Sayfada</div>
+            <ul class="toc-list">
+                <li><a href="#felsefe">Çeviri Felsefesi</a></li>
+                <li><a href="#faksiyonlar">Faksiyon İsimleri</a></li>
+                <li><a href="#mekanlar">Mekan ve Özel İsimler</a></li>
+                <li><a href="#mekanik">Oyun Mekaniği Terimleri</a></li>
+                <li><a href="#statlar">İstatistik Kısaltmaları</a></li>
+                <li><a href="#savascilar">Savaşçı İsimleri</a></li>
+                <li><a href="#donanim">Silah ve Donanım</a></li>
+                <li><a href="#kaos-tanrilari">Kaos Tanrıları</a></li>
+                <li><a href="#psisik-gucler">Psişik Güçler</a></li>
+            </ul>
+        </div>
+
+        <!-- ===== ÇEVİRİ FELSEFESİ ===== -->
+        <section id="felsefe" class="terim-section">
+            <h2 class="terim-section-title">Çeviri Felsefesi</h2>
+            <p class="terim-section-note">Genel ilkeler — her terimin tek tek gerekçesinden önce, hepsine uygulanan ortak mantık.</p>
+            <table class="terim-table">
+                <thead>
+                    <tr><th>İlke</th><th>Açıklama</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-tr">Yerelleştirme katmanı</td>
+                        <td class="col-why">Telif/IP nedeniyle özel isimler (gezegen, şehir, karakter) doğrudan çevrilmiyor,
+                        anlamca veya tematik olarak yakın yeni isimlerle değiştiriliyor — örn. Armageddon → Mahşer,
+                        Acheron → Berzah, Ghazghkull Thraka → Gazkulu Demirbaş.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Mekanik terimler ayrıştırılır</td>
+                        <td class="col-why">Kural metninde aynı kelimenin iki farklı mekaniği karşılaması kafa karıştırır.
+                        Örn. "break test" ve "bottle test" ikisi de gevşek biçimde cesaret/moral ("morale") olsa da, oyun içinde farklı
+                        anları işaret ediyor — bu yüzden "yılgınlık" ve "bozgun" olarak ayrı tutuldu.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Sadık ama literal değil</td>
+                        <td class="col-why">Dehlizler & Devler ve İnfaz Timi'nin ortak çevirisi yaklaşımı: orijinalin
+                        yapısına ve sertliğine sadık kalınır, ama satır satır birebir çeviri yapılmaz — gereksiz
+                        tekrar ve İngilizce kalıplar Türkçenin doğal akışı için kırpılır.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Zar gösterimi</td>
+                        <td class="col-why">"2D6" yerine "2Z6" (zar) — D&D Türkçe konvansiyonuyla tutarlı, projeler arası ortak dil.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== FAKSİYON İSİMLERİ ===== -->
+        <section id="faksiyonlar" class="terim-section">
+            <h2 class="terim-section-title">Faksiyon İsimleri <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">Tüm 15 faksiyon adı ve GW karşılığı — kaynaklar.html ile birebir tutarlı.</p>
+            <table class="terim-table">
+                <thead>
+                    <tr><th>Türkçe</th><th>GW Karşılığı</th><th>Alt-isim / Birim</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="col-tr">Uzay Komandosu İzcileri</td><td class="col-source">Space Marine Scouts</td><td class="col-why">Kül Pençesi kapitülü</td></tr>
+                    <tr><td class="col-tr">İmparatorluk Muhafızları</td><td class="col-source">Astra Militarum / Imperial Guard</td><td class="col-why">Mahşer Piyadeleri, 3. "Demir" Alayı</td></tr>
+                    <tr><td class="col-tr">Muharip Rahibeler</td><td class="col-source">Adepta Sororitas / Sisters of Battle</td><td class="col-why">Kızıl Damla Tarikatı</td></tr>
+                    <tr><td class="col-tr">Bozfarisler</td><td class="col-source">Grey Knights</td><td class="col-why">Ordo Malleus özel müdahale timi</td></tr>
+                    <tr><td class="col-tr">Engizisyon</td><td class="col-source">Agents of the Imperium / Inquisition</td><td class="col-why">Tahkikçi Vorn'un timi</td></tr>
+                    <tr><td class="col-tr">Teknokratlar</td><td class="col-source">Adeptus Mechanicus</td><td class="col-why">Legio Ferrox</td></tr>
+                    <tr><td class="col-tr">Kaos Komandoları</td><td class="col-source">Chaos Space Marines / Thousand Sons</td><td class="col-why">Düşkün Hükümran</td></tr>
+                    <tr><td class="col-tr">Genuğru Tarikatı</td><td class="col-source">Genestealer Cults</td><td class="col-why">Sonsuz Kurt Cemaati</td></tr>
+                    <tr><td class="col-tr">Ork Veletleri</td><td class="col-source">Orks</td><td class="col-why">Nemrutdiş'in Haydutları</td></tr>
+                    <tr><td class="col-tr">Hünerdiyar Ælfleri</td><td class="col-source">Aeldari / Craftworlds</td><td class="col-why">Ael-Daris</td></tr>
+                    <tr><td class="col-tr">Kara Ælfler</td><td class="col-source">Drukhari</td><td class="col-why">Yarılan Ay Kabalı</td></tr>
+                    <tr><td class="col-tr">Alacalar</td><td class="col-source">Harlequins</td><td class="col-why">Kırık Ayna Kumpanyası</td></tr>
+                    <tr><td class="col-tr">Duatlar</td><td class="col-source">Necrons</td><td class="col-why">Mahşer Hanedanı</td></tr>
+                    <tr><td class="col-tr">Tiān Kaşifleri</td><td class="col-source">T'au Empire</td><td class="col-why">Sa'cea Eyaleti</td></tr>
+                    <tr><td class="col-tr">Böcekler</td><td class="col-source">Tyranids</td><td class="col-why">Kopma Yığın Nagaia</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== MEKAN VE ÖZEL İSİMLER ===== 
+        <section id="mekanlar" class="terim-section">
+            <h2 class="terim-section-title">Mekan ve Özel İsimler <span class="status-pill is-pending">Kısmen Tamamlandı</span></h2>
+            <p class="terim-section-note">Telif nedeniyle yerelleştirilen özel isimler. "Neden?" sütunu, doğrudan çeviri olmayıp tematik bir karşılık seçilen durumları açıklar. Liste mahser.html'deki lore ile genişletilebilir — şu an bilinen ana isimler aşağıda.</p>
+            <table class="terim-table">
+                <thead>
+                    <tr><th>Türkçe</th><th>GW Karşılığı</th><th>Neden?</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-tr">Mahşer</td><td class="col-source">Armageddon</td>
+                        <td class="col-why">"Mahşer" kıyamet/hesap günü anlamına gelir — Armageddon'ın İncil kökenli çağrışımına dini/kültürel olarak yakın bir Türkçe karşılık.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Berzah</td><td class="col-source">Acheron (hive city)</td>
+                        <td class="col-why">İslami terminolojide ölüm ve diriliş arasındaki ara/eşik durumu — sonsuz kuşatma altındaki bir kovan-şehir için tematik olarak güçlü bir eşleşme.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Gazkulu Demirbaş</td><td class="col-source">Ghazghkull Thraka</td>
+                        <td class="col-why">Ses ve ritim olarak orijinaline yakın, ama doğrudan kopya olmayan bir Ork ismi.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Van Ştrap</td><td class="col-source">Von Strab</td>
+                        <td class="col-why">Aynı mantık — fonetik yakınlık, telif açısından güvenli mesafe.</td>
+                    </tr>
+                    <tr><td class="col-tr empty-cell">—</td><td class="col-source">(diğer gezegen/şehir isimleri)</td><td class="col-why empty-cell">mahser.html lore'undan genişletilebilir</td></tr>
+                </tbody>
+            </table>
+        </section> -->
+
+        <!-- ===== OYUN MEKANİĞİ TERİMLERİ ===== -->
+        <section id="mekanik" class="terim-section">
+            <h2 class="terim-section-title">Oyun Mekaniği Terimleri <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">SRD'de geçen temel kural terimleri. </p>
+            <table class="terim-table">
+                <thead>
+                    <tr><th>Türkçe</th><th>İngilizce</th><th>Neden?</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-tr">İnfaz Timi</td><td class="col-source">Kill Team</td>
+                        <td class="col-why">Oyunun formatını dolaylı "takım" kelimesinden daha sert ve doğrudan anlatıyor; oyunun başlığında da kullanıldı.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Sinmiş</td><td class="col-source">Pinned</td>
+                        <td class="col-why">Yerleşik terim — sinme/çömelme imgesini taşıyor.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Yılgın</td><td class="col-source">Broken</td>
+                        <td class="col-why">Yerleşik terim — cesareti kırılmış, kaçmaya çalışan durum.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Devrilmiş</td><td class="col-source">Down</td>
+                        <td class="col-why">Yerleşik terim — yere yıkılmış ama henüz saf dışı olmamış durum.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Yılgınlık sınaması</td><td class="col-source">Nerve / Break Test</td>
+                        <td class="col-why">"Moral Testi"nden kasıtlı olarak ayrı tutuldu — biri tekil savaşçının o anki tepkisi, diğeri tüm timin oyunu bırakıp bırakmayacağı. Aynı kelimeyi kullanmak iki farklı mekaniği birbirine karıştırırdı.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Bozgun sınaması</td><td class="col-source">Bottle Test</td>
+                        <td class="col-why">Yukarıdaki ayrım nedeniyle yılgınlık sınamasından farklı bir isim.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Bozguna uğramak</td><td class="col-source">Bottle Out</td>
+                        <td class="col-why">Sınama başarısız olduğunda timin savaş alanını terk etmesi.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Saf Dışı</td><td class="col-source">Out of Action</td>
+                        <td class="col-why">T</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">2Z6</td><td class="col-source">2D6</td>
+                        <td class="col-why">"Zar" kısaltması — D&D Türkçe konvansiyonuyla uyumlu</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Gözetleme</td><td class="col-source">Overwatch</td>
+                        <td class="col-why">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">İsabet</td><td class="col-source">To-Hit</td>
+                        <td class="col-why">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-tr">Tekrar Atış</td><td class="col-source">Re-roll</td>
+                        <td class="col-why">—</td>
+                    </tr>
+                    <tr><td class="col-tr">Yaralama</td><td class="col-source">To-Wound</td><td class="col-why empty-cell"></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== İSTATİSTİK KISALTMALARI ===== -->
+        <section id="statlar" class="terim-section">
+            <h2 class="terim-section-title">İstatistik Kısaltmaları <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">Savaşçı stat bloklarında kullanılan dokuz karakteristik. SRD ve Tim Kur sayfalarında bu kısaltmalarla gösteriliyor.</p>
+            <div class="abbr-grid">
+                <div class="abbr-item"><span class="abbr">HRK</span> — <span class="full-tr">Hareket</span> <span class="full-en">(Movement / M)</span></div>
+                <div class="abbr-item"><span class="abbr">DVŞ</span> — <span class="full-tr">Dövüş Becerisi</span> <span class="full-en">(Weapon Skill / WS)</span></div>
+                <div class="abbr-item"><span class="abbr">ATŞ</span> — <span class="full-tr">Atış Becerisi</span> <span class="full-en">(Ballistic Skill / BS)</span></div>
+                <div class="abbr-item"><span class="abbr">KUV</span> — <span class="full-tr">Kuvvet</span> <span class="full-en">(Strength / S)</span></div>
+                <div class="abbr-item"><span class="abbr">DYN</span> — <span class="full-tr">Dayanım</span> <span class="full-en">(Toughness / T)</span></div>
+                <div class="abbr-item"><span class="abbr">CAN</span> — <span class="full-tr">Can Puanı</span> <span class="full-en">(Wounds / W)</span></div>
+                <div class="abbr-item"><span class="abbr">ÖNC</span> — <span class="full-tr">Öncelik</span> <span class="full-en">(Initiative / I)</span></div>
+                <div class="abbr-item"><span class="abbr">SAL</span> — <span class="full-tr">Saldırı</span> <span class="full-en">(Attacks / A)</span></div>
+                <div class="abbr-item"><span class="abbr">LDR</span> — <span class="full-tr">Liderlik</span> <span class="full-en">(Leadership / Ld)</span></div>
+            </div>
+        </section>
+
+        <!-- ===== SAVAŞÇI İSİMLERİ ===== -->
+        <section id="savascilar" class="terim-section">
+            <h2 class="terim-section-title">Savaşçı İsimleri <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">Her faksiyonun Komutan / Er / Acemi / Uzman isimleri — Tim Kur veri modelinde artık tam Türkçe olarak mevcut.</p>
+            <table class="terim-table">
+                <thead><tr><th>Faksiyon</th><th>Rol</th><th>İngilizce</th><th>Türkçe</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source" rowspan="4">Uzay Komandosu İzcileri</td><td class="col-source">Komutan</td><td class="col-source">Scout Sergeant</td><td class="col-tr">İzci Çavuş</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Scout</td><td class="col-tr">İzci</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Novitiate Scout</td><td class="col-tr">Acemi İzci</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Scout Gunner</td><td class="col-tr">İzci Avcı</td></tr>
+                    <tr><td class="col-source" rowspan="4">İmparatorluk Muhafızları</td><td class="col-source">Komutan</td><td class="col-source">Veteran Sergeant</td><td class="col-tr">Muhafız Çavuş</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Veteran Guardsman</td><td class="col-tr">Kıdemli Muhafız</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Guardsman</td><td class="col-tr">Muhafız</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Special Weapons Operative</td><td class="col-tr">Özel Silah Nişancısı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Ork Veletleri</td><td class="col-source">Komutan</td><td class="col-source">Boss Nob</td><td class="col-tr">Kodaman</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Boy</td><td class="col-tr">Velet</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Yoof</td><td class="col-tr">Çömez</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Spanner Boy</td><td class="col-tr">Tamirci Velet</td></tr>
+                    <tr><td class="col-source" rowspan="4">Muharip Rahibeler</td><td class="col-source">Komutan</td><td class="col-source">Sister Superior</td><td class="col-tr">Başrahibe</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Battle Sister</td><td class="col-tr">Rahibe</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Novitiate</td><td class="col-tr">Müptedi</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Gunner</td><td class="col-tr">Nişancı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Kaos Komandoları</td><td class="col-source">Komutan</td><td class="col-source">Aspiring Champion</td><td class="col-tr empty-cell">—</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Chaos Space Marine</td><td class="col-tr">Kaos Komandosu</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Chaos Cultist</td><td class="col-tr">Tarikatçı</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Chaos Gunner</td><td class="col-tr">Kaos Nişancısı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Kara Ælfler</td><td class="col-source">Komutan</td><td class="col-source">Syren</td><td class="col-tr">Siren</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Wych</td><td class="col-tr">Cadı</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Debutante</td><td class="col-tr">Tazekız</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Bloodbride</td><td class="col-tr">Kankadın</td></tr>
+                    <tr><td class="col-source" rowspan="4">Hünerdiyar Ælfleri</td><td class="col-source">Komutan</td><td class="col-source">Dire Avenger Exarch</td><td class="col-tr">Kingüden Eksarh</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Dire Avenger</td><td class="col-tr">Kingüden</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Guardian Defender</td><td class="col-tr">Milis</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Guardian Defender Gunner</td><td class="col-tr">Milis Nişancı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Genuğru Tarikatı</td><td class="col-source">Komutan</td><td class="col-source">Neophyte Leader</td><td class="col-tr">Müptedi Lider</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Neophyte Hybrid</td><td class="col-tr">Müptedi Melez</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Neophyte Initiate</td><td class="col-tr">Müptedi Çömez</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Neophyte Heavy</td><td class="col-tr">Müptedi Muharip</td></tr>
+                    <tr><td class="col-source" rowspan="3">Bozfarisler</td><td class="col-source">Komutan</td><td class="col-source">Justicar</td><td class="col-tr">Hakim</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Grey Knight</td><td class="col-tr">Bozfaris</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Grey Knight Gunner</td><td class="col-tr">Bozfaris Nişancısı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Alacalar</td><td class="col-source">Komutan</td><td class="col-source">Troupe Master</td><td class="col-tr">Kumpanya Başı</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Player</td><td class="col-tr">Oyuncu</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Mime</td><td class="col-tr">Pandomim</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Virtuoso</td><td class="col-tr">Üstat</td></tr>
+                    <tr><td class="col-source" rowspan="4">Engizisyon</td><td class="col-source">Komutan</td><td class="col-source">Ordo Xenos Inquisitor</td><td class="col-tr">Zeno Ocağı Tahkikçisi</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Inquisitorial Acolyte</td><td class="col-tr">Engizisyon Yardımcısı</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Inquisitorial Initiate</td><td class="col-tr">Engizisyon Müridi</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Crusader</td><td class="col-tr">Mücahit</td></tr>
+                    <tr><td class="col-source" rowspan="4">Duatlar</td><td class="col-source">Komutan</td><td class="col-source">Appointed Immortal</td><td class="col-tr">Seçkin Ölümsüz</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Immortal</td><td class="col-tr">Ölümsüz</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Warrior</td><td class="col-tr">Cengâver</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Deathmark</td><td class="col-tr">Kefenbiçen</td></tr>
+                    <tr><td class="col-source" rowspan="4">Teknokratlar</td><td class="col-source">Komutan</td><td class="col-source">Skitarii Ranger Alpha</td><td class="col-tr">Teknomuhafız Kolcu Alfa</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Skitarii Ranger</td><td class="col-tr">Teknomuhafız Kolcu</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Skitarii Fresh-forged</td><td class="col-tr">Teknomuhafız</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Skitarii Specialist</td><td class="col-tr">Teknomuhafız Uzman</td></tr>
+                    <tr><td class="col-source" rowspan="4">Tiān Kaşifleri</td><td class="col-source">Komutan</td><td class="col-source">Pathfinder Shas'ui</td><td class="col-tr">Kaşif Kolbaşı</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Pathfinder</td><td class="col-tr">Kaşif</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Pathfinder Cadet</td><td class="col-tr">Kaşif Çaylağı</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Pathfinder Specialist</td><td class="col-tr">Kaşif Uzmanı</td></tr>
+                    <tr><td class="col-source" rowspan="4">Böcekler</td><td class="col-source">Komutan</td><td class="col-source">Tyranid Alpha</td><td class="col-tr">Alfa Böcek</td></tr>
+                    <tr><td class="col-source">Er</td><td class="col-source">Tyranid Warrior</td><td class="col-tr">Böcek Asker</td></tr>
+                    <tr><td class="col-source">Acemi</td><td class="col-source">Tyranid New-spawn</td><td class="col-tr">Böcek Yenidoğan</td></tr>
+                    <tr><td class="col-source">Uzman</td><td class="col-source">Tyranid Gun-beast</td><td class="col-tr">Böceksilah</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== SİLAH VE DONANIM ===== -->
+        <section id="donanim" class="terim-section">
+            <h2 class="terim-section-title">Silah ve Donanım <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">Tüm 15 faksiyonun silah, ekipman ve donanım terimleri. Faksiyona özgü olanlar parantez içinde belirtilmiştir.</p>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:1.5rem;">Yakın Dövüş Silahları</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Assault blade / Cutlass / Sword</td><td class="col-tr">Hücum bıçağı / Kama / Kılıç</td><td class="col-why">= Kılıç (tümü aynı profil)</td></tr>
+                    <tr><td class="col-source">Combat blade / Knife</td><td class="col-tr">Dövüş bıçağı / Bıçak</td><td class="col-why">= Bıçak</td></tr>
+                    <tr><td class="col-source">Big choppa</td><td class="col-tr">Kocakeser</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Buzz choppa / Dok's tools</td><td class="col-tr">Vızkeser / Tabip edevatı</td><td class="col-why">Ork (aynı profil)</td></tr>
+                    <tr><td class="col-source">Chainsword</td><td class="col-tr">Hızar</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Choppa / Wrench</td><td class="col-tr">Keser / Kurbağacık</td><td class="col-why">Ork (aynı profil)</td></tr>
+                    <tr><td class="col-source">Grabba stikk</td><td class="col-tr">Kıskaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Grot prod</td><td class="col-tr">Üvendire</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Killsaw</td><td class="col-tr">Bıçkı</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Shank</td><td class="col-tr">Şiş</td><td class="col-why">Ork. = Bıçak</td></tr>
+                    <tr><td class="col-source">Squig-hide whip</td><td class="col-tr">Kırbaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Squig hound</td><td class="col-tr">Tazı</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">'Urty syringe</td><td class="col-tr">Enjektör</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Eviscerator</td><td class="col-tr">Karındeşen</td><td class="col-why">Muharip Rahibeler</td></tr>
+                    <tr><td class="col-source">Lightning claw</td><td class="col-tr">Pençe</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Power axe / Axe</td><td class="col-tr">Erk baltası / Balta</td><td class="col-why">Balta: Kaos</td></tr>
+                    <tr><td class="col-source">Bludgeon</td><td class="col-tr">Sopa</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Chainfist</td><td class="col-tr">Testere</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Flail</td><td class="col-tr">Topuz</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Mutated limbs</td><td class="col-tr">Mutasyon uzvu</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Power fist / Power klaw</td><td class="col-tr">Erk yumruğu / Erk pençesi</td><td class="col-why">Power klaw: Ork</td></tr>
+                    <tr><td class="col-source">Power maul</td><td class="col-tr">Erk gürzü</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Power sword</td><td class="col-tr">Erk kılıcı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Servo-arm</td><td class="col-tr">Mekanik kol</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Thunder hammer</td><td class="col-tr">Çekiç</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Agoniser</td><td class="col-tr">Istırapçı</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Archite Glaive</td><td class="col-tr">Başkadın palası</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Chainhook</td><td class="col-tr">Çengel</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Amputator</td><td class="col-tr">Kolkesen</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Wych knife</td><td class="col-tr">Cadı bıçağı</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Hydra Gauntlet</td><td class="col-tr">Ejder pençesi</td><td class="col-why">Kara Ælfler (arena)</td></tr>
+                    <tr><td class="col-source">Razorflails</td><td class="col-tr">Ustura gürz</td><td class="col-why">Kara Ælfler (arena)</td></tr>
+                    <tr><td class="col-source">Shardnet and Impaler</td><td class="col-tr">Kıymıkağı & kazık</td><td class="col-why">Kara Ælfler (arena)</td></tr>
+                    <tr><td class="col-source">Diresword</td><td class="col-tr">Karakılıç</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Ghostaxe</td><td class="col-tr">Ruhbalta</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Ghostsword</td><td class="col-tr">Ruhkılıç</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Powerglaive</td><td class="col-tr">Erk palası</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Metamorph claw/talon/whip</td><td class="col-tr">Metamorf pençe/tırnak/kırbaç</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Power pick</td><td class="col-tr">Erk kazması</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Rending claw</td><td class="col-tr">Yırtıcı pençe</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Nemesis Daemon Hammer</td><td class="col-tr">Gazap iblis çekici</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Nemesis Force Halberd</td><td class="col-tr">Gazap erk teberi</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Nemesis Force Sword</td><td class="col-tr">Gazap erk kılıcı</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Nemesis Warding Stave</td><td class="col-tr">Gazap savma asası</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Pair of Nemesis Falchions</td><td class="col-tr">Bir çift gazap gadresi</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Harlequin's Caress</td><td class="col-tr">Alacanın dokunuşu</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Harlequin's Embrace</td><td class="col-tr">Alacanın sarılışı</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Harlequin's Kiss</td><td class="col-tr">Alacanın öpücüğü</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Miststave</td><td class="col-tr">Sis asası</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Monomolecular blade</td><td class="col-tr">Monobıçak</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Arco-flail</td><td class="col-tr">Arkokırbaç</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Scythian Venom Talon</td><td class="col-tr">İskit zehirli hançeri</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Executioner Greatblade</td><td class="col-tr">Cellat kocakılıcı</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Hyperphase sword</td><td class="col-tr">Hiperfaz kılıcı</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Rod of covenant</td><td class="col-tr">Ahit asası</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Voidblade</td><td class="col-tr">Karabıçak</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Warscythe</td><td class="col-tr">Savaş tırpanı</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Arc maul</td><td class="col-tr">Çakın gürzü</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Chordclaw</td><td class="col-tr">Akor pençesi</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Pair of transonic blades</td><td class="col-tr">Bir çift transonik bıçak</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Taser goad</td><td class="col-tr">Şok üvendiresi</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Transonic razor</td><td class="col-tr">Transonik ustura</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Honour stave</td><td class="col-tr">Şeref asası</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Bonesword / Lash whip</td><td class="col-tr">Kemikkılıç / Kamçı dokunaç</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Pair of rending claws</td><td class="col-tr">Bir çift yırtıcı pençe</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Pair of scything talons</td><td class="col-tr">Bir çift tırpantırnak</td><td class="col-why">Böcekler</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Tabancalar</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Bolt pistol</td><td class="col-tr">Temir tabancası</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Grot blasta</td><td class="col-tr">Fırlangaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Laspistol</td><td class="col-tr">Lazer tabancası</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Kustom mega-slugga</td><td class="col-tr">Özel mega patlangaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Plasma pistol</td><td class="col-tr">Plazma tabancası</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Autopistol</td><td class="col-tr">Otomatik tabanca</td><td class="col-why">Kaos, Genuğru, Engizisyon</td></tr>
+                    <tr><td class="col-source">Blast pistol</td><td class="col-tr">İnfilak tabancası</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Splinter pistol</td><td class="col-tr">Kıymık tabancası</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Shuriken pistol</td><td class="col-tr">Disk tabancası</td><td class="col-why">Hünerdiyar Ælfleri, Alacalar</td></tr>
+                    <tr><td class="col-source">Fusion pistol</td><td class="col-tr">Füzyon tabancası</td><td class="col-why">Hünerdiyar Ælfleri, Alacalar</td></tr>
+                    <tr><td class="col-source">Hand flamer</td><td class="col-tr">Alev tabancası</td><td class="col-why">Muharip Rahibeler, Genuğru, Engizisyon</td></tr>
+                    <tr><td class="col-source">Web pistol</td><td class="col-tr">Ağ tabancası</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Neuro disruptor</td><td class="col-tr">Sinirkıran</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Needle pistol</td><td class="col-tr">İğne tabancası</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Inferno pistol</td><td class="col-tr">Cehennem tabancası</td><td class="col-why">Muharip Rahibeler, Engizisyon</td></tr>
+                    <tr><td class="col-source">Particle caster</td><td class="col-tr">Parçacık tabancası</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Arc pistol</td><td class="col-tr">Çakın tabancası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Phosphor blast pistol</td><td class="col-tr">Fosfor tabancası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Radium pistol</td><td class="col-tr">Radyum tabancası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Flechette blaster</td><td class="col-tr">Misket tabancası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Stubcarbine</td><td class="col-tr">Dom karabinası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Pulse pistol</td><td class="col-tr">Atım tabancası</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Temel Silahlar</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Boltgun</td><td class="col-tr">Temren tüfeği</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Shoota / Kombi-shoota</td><td class="col-tr">Atgaç / Kombo-atgaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Slugga</td><td class="col-tr">Patlangaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Lasgun</td><td class="col-tr">Lazer tüfeği</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Shotgun</td><td class="col-tr">Pompalı tüfek</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Sniper rifle</td><td class="col-tr">Nişancı tüfeği</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Autogun</td><td class="col-tr">Otomatik tüfek</td><td class="col-why">Kaos, Engizisyon</td></tr>
+                    <tr><td class="col-source">Shardcarbine</td><td class="col-tr">Kıymık karabinası</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Avenger Shuriken Catapult</td><td class="col-tr">Kingüden disk sapanı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Shuriken catapult</td><td class="col-tr">Disk sapanı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Twin Avenger shuriken catapult</td><td class="col-tr">İkili kingüden disk sapanı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Gauss blaster</td><td class="col-tr">Gauss patlatıcısı</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Gauss flayer</td><td class="col-tr">Gauss deriyüzeni</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Tesla carbine</td><td class="col-tr">Tesla karabinası</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Galvanic rifle</td><td class="col-tr">Galvanik tüfek</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Radium carbine</td><td class="col-tr">Radyum karabinası</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Pulse carbine</td><td class="col-tr">Atım karabinası</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Pulse rifle</td><td class="col-tr">Atım tüfeği</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Deathspitter</td><td class="col-tr">Ölümkusan</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Devourer</td><td class="col-tr">Yutucu</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Pair of spinefists</td><td class="col-tr">Bir çift dikenyumruk</td><td class="col-why">Böcekler</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Özel Silahlar</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Big shoota</td><td class="col-tr">Koca atgaç</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Flamer</td><td class="col-tr">Alev makinesi</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Grenade launcher</td><td class="col-tr">Bomba atar</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Grenadier Gauntlet</td><td class="col-tr">Humbaracı eldiveni</td><td class="col-why">İmparatorluk Muhafızları</td></tr>
+                    <tr><td class="col-source">Heavy flamer</td><td class="col-tr">Ağır alev makinesi</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Meltagun</td><td class="col-tr">Isıl agitör (buharlaştırıcı)</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Plasma gun</td><td class="col-tr">Plazma tüfeği</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Ripper gun</td><td class="col-tr">Ağır pompalı tüfek</td><td class="col-why">İmparatorluk Muhafızları</td></tr>
+                    <tr><td class="col-source">Rokkit launcha</td><td class="col-tr">Füze fırıltgacı</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Storm bolter</td><td class="col-tr">Çifte temren</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Combi-flamer</td><td class="col-tr">Kombo alev makinesi</td><td class="col-why">Muharip Rahibeler, Kaos, Engizisyon</td></tr>
+                    <tr><td class="col-source">Combi-melta</td><td class="col-tr">Kombo buharlaştırıcı</td><td class="col-why">Muharip Rahibeler, Kaos, Engizisyon</td></tr>
+                    <tr><td class="col-source">Condemnor boltgun</td><td class="col-tr">Hükümran temren</td><td class="col-why">Muharip Rahibeler</td></tr>
+                    <tr><td class="col-source">D-scythe</td><td class="col-tr">Bozma tırpanı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Wraithcannon</td><td class="col-tr">Tayftopu</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Webber</td><td class="col-tr">Ağatan</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Incinerator</td><td class="col-tr">Küleden</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Psilencer</td><td class="col-tr">Psişik susturucu</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Psycannon</td><td class="col-tr">Psişik top</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Shrieker Cannon</td><td class="col-tr">Feryat topu</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Synaptic disintegrator</td><td class="col-tr">Sinaptik parçalayıcı</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Arc rifle</td><td class="col-tr">Çakın tüfeği</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Plasma caliver</td><td class="col-tr">Plazma tüfengi</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Transuranic arquebus</td><td class="col-tr">Transauranik arkebüz</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Ion rifle</td><td class="col-tr">İyon tüfeği</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Rail rifle</td><td class="col-tr">Raylı tüfek</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Ağır Silahlar</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Heavy bolter</td><td class="col-tr">Ağır temren</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Missile launcher</td><td class="col-tr">Roketatar</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Snazzgun</td><td class="col-tr">Janti</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Multi-melta</td><td class="col-tr">Çoklu buharlaştırıcı</td><td class="col-why">Muharip Rahibeler</td></tr>
+                    <tr><td class="col-source">Autocannon</td><td class="col-tr">Makineli top</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Lascannon</td><td class="col-tr">Makineli lazer</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Bright lance</td><td class="col-tr">Berrak mızrak</td><td class="col-why">Hünerdiyar Ælfleri (platform)</td></tr>
+                    <tr><td class="col-source">Eldar missile launcher</td><td class="col-tr">Ælf roketatarı</td><td class="col-why">Hünerdiyar Ælfleri (platform)</td></tr>
+                    <tr><td class="col-source">Scatter laser</td><td class="col-tr">Saçma lazer</td><td class="col-why">Hünerdiyar Ælfleri (platform)</td></tr>
+                    <tr><td class="col-source">Shuriken cannon</td><td class="col-tr">Disk topu</td><td class="col-why">Hünerdiyar Ælfleri (platform)</td></tr>
+                    <tr><td class="col-source">Starcannon</td><td class="col-tr">Yıldıztopu</td><td class="col-why">Hünerdiyar Ælfleri (platform)</td></tr>
+                    <tr><td class="col-source">Heavy stubber</td><td class="col-tr">Ağır domatar</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Mining laser</td><td class="col-tr">Madenci lazeri</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Seismic cannon</td><td class="col-tr">Sismik top</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Burst cannon</td><td class="col-tr">Seri atış topu</td><td class="col-why">Tiān Kaşifleri (dron)</td></tr>
+                    <tr><td class="col-source">Fusion blaster</td><td class="col-tr">Füzyon patlatıcısı</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Barbed Strangler</td><td class="col-tr">Dikenli boğucu</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Venom Cannon</td><td class="col-tr">Zehir topu</td><td class="col-why">Böcekler</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">El Bombaları</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Demolition charge</td><td class="col-tr">Tahrip kalıbı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Frag grenade</td><td class="col-tr">Parça tesirli bomba</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Krak grenade</td><td class="col-tr">Zırh delici bomba</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Melta bomb</td><td class="col-tr">Isıl bomba</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Stikkbomb</td><td class="col-tr">Tutkaçlı bomba</td><td class="col-why">Ork. = Parça tesirli bomba</td></tr>
+                    <tr><td class="col-source">Blight grenade</td><td class="col-tr">Cerahat bombası</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Plasma grenade</td><td class="col-tr">Plazma bombası</td><td class="col-why">Kara Ælfler, Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Blasting charge</td><td class="col-tr">İnfilak kalıbı</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Prismatic grenade</td><td class="col-tr">Prizmatik bomba</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Rad grenade</td><td class="col-tr">Radyan bomba</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Photon grenade</td><td class="col-tr">Foton bombası</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Zırh</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Carapace armour / 'Eavy armour</td><td class="col-tr">Karakabuk zırh / Aar zırh</td><td class="col-why">Aar zırh: Ork (aynı profil)</td></tr>
+                    <tr><td class="col-source">Flak armour</td><td class="col-tr">Flak zırh</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Power armour</td><td class="col-tr">Erk zırhı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Scout armour</td><td class="col-tr">İzci zırhı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Squig-hide armour</td><td class="col-tr">Deri zırh</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Terminator armour</td><td class="col-tr">Dretnot zırhı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Improvised armour</td><td class="col-tr">Basit zırh</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Ghostplate armour</td><td class="col-tr">Hayalet zırh</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Gnarlskin</td><td class="col-tr">Budaklı deri</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Wychsuit</td><td class="col-tr">Cadı tulumu</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Aspect armour</td><td class="col-tr">Cephe zırhı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Forceshield</td><td class="col-tr">Güç kalkanı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Heavy aspect armour</td><td class="col-tr">Ağır cephe zırhı</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Mesh armour</td><td class="col-tr">Örgü zırh</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Shimmershield</td><td class="col-tr">Pırılkalkan</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Wraithbone construct</td><td class="col-tr">Tayfkemik zırh</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Mining suit</td><td class="col-tr">Madenci tulumu</td><td class="col-why">Genuğru Tarikatı</td></tr>
+                    <tr><td class="col-source">Immortal exoskeleton</td><td class="col-tr">Ölümsüz kabuğu</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Warrior exoskeleton</td><td class="col-tr">Cengâver kabuğu</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Sicarian battle armour</td><td class="col-tr">Hançerli harp zırhı</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Skitarii war plate</td><td class="col-tr">Teknomuhafız cenk zırhı</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Recon armour</td><td class="col-tr">Keşif zırhı</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Drone carapace</td><td class="col-tr">Dron karakabuğu</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Combat armour</td><td class="col-tr">Harp zırhı</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">XV25 Stealth battlesuit</td><td class="col-tr">XV25 sızma zırhı</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Mühimmat ve Dürbünler</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Gitfinda</td><td class="col-tr">Herifbulan</td><td class="col-why">Ork</td></tr>
+                    <tr><td class="col-source">Hellfire bolts</td><td class="col-tr">Azap temiri</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Hotshot laser power pack</td><td class="col-tr">Yoğunlaştırılmış lazer güç ünitesi</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Red-dot laser sight</td><td class="col-tr">Kırmızı nokta lazer nişangâh</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Telescopic sight</td><td class="col-tr">Tüfek dürbünü</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Toxic round</td><td class="col-tr">Toksik mermi</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Inferno bolts</td><td class="col-tr">Cehennem temiri</td><td class="col-why">Kaos</td></tr>
+                    <tr><td class="col-source">Psybolt</td><td class="col-tr">Psişik temir</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Soulseeker rounds</td><td class="col-tr">Ruhbulan mermisi</td><td class="col-why">Kara Ælfler</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="terim-section-title" style="font-size:1.1rem; margin-top:2rem;">Özel Donanım</h3>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Not</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Brute shield</td><td class="col-tr">Kaba kalkan</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Camo gear</td><td class="col-tr">Kamuflaj takımı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Clip harness</td><td class="col-tr">Tutunma koşumu</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Photo-visor</td><td class="col-tr">Foto-vizör</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Slabshield</td><td class="col-tr">Kalkan duvarı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Storm shield</td><td class="col-tr">Enerji kalkanı</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Weapon reload</td><td class="col-tr">Yedek mühimmat</td><td class="col-why"></td></tr>
+                    <tr><td class="col-source">Jump pack</td><td class="col-tr">İtiş kiti</td><td class="col-why">Muharip Rahibeler, Engizisyon</td></tr>
+                    <tr><td class="col-source">Simulacrum Imperialis</td><td class="col-tr">Kutsal emanet</td><td class="col-why">Muharip Rahibeler</td></tr>
+                    <tr><td class="col-source">Blade venom</td><td class="col-tr">Biçen zehri</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Mirrorhelm</td><td class="col-tr">Aynalı miğfer</td><td class="col-why">Kara Ælfler</td></tr>
+                    <tr><td class="col-source">Mandiblasters</td><td class="col-tr">Mandibulatar</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Swooping hawk wings</td><td class="col-tr">Şahinkanat</td><td class="col-why">Hünerdiyar Ælfleri</td></tr>
+                    <tr><td class="col-source">Personal teleporter</td><td class="col-tr">Işınlayıcı</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Flip belt</td><td class="col-tr">Sıçrama kemeri</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Hallucinogen grenade launcher</td><td class="col-tr">Hezeyan bomba atarı</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Harlequin mask</td><td class="col-tr">Alaca maskesi</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Holo-suit</td><td class="col-tr">Holotulum</td><td class="col-why">Alacalar</td></tr>
+                    <tr><td class="col-source">Uluméathi plasma syphon</td><td class="col-tr">Plazma emici</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Digital weapons</td><td class="col-tr">Dijital silahlar</td><td class="col-why">Engizisyon</td></tr>
+                    <tr><td class="col-source">Dispersion shield</td><td class="col-tr">Dağıtıcı kalkan</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Gravity displacement pack</td><td class="col-tr">Kütleçekim kaydırıcı</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Mindshackle scarabs</td><td class="col-tr">Zihinmühür muskaları</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Phase shifter</td><td class="col-tr">Faz değiştirici</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Shadowloom</td><td class="col-tr">Gölgedokuyan</td><td class="col-why">Duatlar</td></tr>
+                    <tr><td class="col-source">Enhanced data-tether</td><td class="col-tr">Güçlendirilmiş veri bağı</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Omnispex</td><td class="col-tr">Tepegöz</td><td class="col-why">Teknokratlar</td></tr>
+                    <tr><td class="col-source">Gravity wave projector</td><td class="col-tr">Kütleçekim dalgası projektörü</td><td class="col-why">Tiān Kaşifleri (dron)</td></tr>
+                    <tr><td class="col-source">Hover drone</td><td class="col-tr">Süzülen dron</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Markerlight</td><td class="col-tr">Nişan lazeri</td><td class="col-why">Tiān Kaşifleri</td></tr>
+                    <tr><td class="col-source">Pulse accelerator</td><td class="col-tr">Atım hızlandırıcı</td><td class="col-why">Tiān Kaşifleri (dron)</td></tr>
+                    <tr><td class="col-source">Scanning array</td><td class="col-tr">Tarama matrisi</td><td class="col-why">Tiān Kaşifleri (dron)</td></tr>
+                    <tr><td class="col-source">Acid blood</td><td class="col-tr">Asitkan</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Adrenal glands</td><td class="col-tr">Adrenalin bezleri</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Chitin carapace</td><td class="col-tr">Kitin karakabuk</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Extended chitin carapace</td><td class="col-tr">Yoğun kitin karakabuk</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Flesh hooks</td><td class="col-tr">Et kancaları</td><td class="col-why">Böcekler</td></tr>
+                    <tr><td class="col-source">Toxin sacs</td><td class="col-tr">Zehir keseleri</td><td class="col-why">Böcekler</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== KAOS TANRILARI ===== -->
+        <section id="kaos-tanrilari" class="terim-section">
+            <h2 class="terim-section-title">Kaos Tanrıları <span class="status-pill is-done">Tamamlandı</span></h2>
+            <p class="terim-section-note">Prometyum Ağı'nın karanlığında boy gösteren Kaos'un dört büyük tanrısı.</p>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Neden?</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Khorne</td><td class="col-tr">Kanhan</td><td class="col-why">"Kan" kökü korunmuş, fonetik yakınlık sağlanmış.</td></tr>
+                    <tr><td class="col-source">Tzeentch</td><td class="col-tr">Devranzenc</td><td class="col-why">Değişim/dönüşüm izleği Türkçeye yedirilmiş.</td></tr>
+                    <tr><td class="col-source">Nurgle</td><td class="col-tr">Marazgıl</td><td class="col-why">"Maraz" (hastalık, sıkıntı) kökünden.</td></tr>
+                    <tr><td class="col-source">Slaanesh</td><td class="col-tr">Şehvetşer</td><td class="col-why">Hedonizm ve şiddet izleği Türkçeye taşınmış.</td></tr>
+                    <tr><td class="col-source">Chaos Undivided</td><td class="col-tr">Şer İttifakı</td><td class="col-why">Bölünmemiş Kaos'un ittifak olarak çerçevelenmesi.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== PSİŞİK GÜÇLER ===== -->
+        <section id="psisik-gucler" class="terim-section">
+            <h2 class="terim-section-title">Psişik Güçler <span class="status-pill is-pending">Kısmen Tamamlandı</span></h2>
+            <p class="terim-section-note">Bozfarisler'e özgü psişik güçler; diğer faksiyonların psişik güçleri eklenecek.</p>
+            <table class="terim-table">
+                <thead><tr><th>İngilizce</th><th>Türkçe</th><th>Faksiyon</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-source">Astral Aim</td><td class="col-tr">Ruhani Nişan</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Cleansing Flame</td><td class="col-tr">Kefaret Alevi</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Hammerhand</td><td class="col-tr">Çekiçyumruk</td><td class="col-why">Bozfarisler</td></tr>
+                    <tr><td class="col-source">Purge Soul</td><td class="col-tr">Ruh Arındırma</td><td class="col-why">Bozfarisler</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                    <p class="footer-tagline">Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Kaynaklar</h4>
+                        <a href="mahser.html">Mahşer (Lore)</a>
+                        <a href="srd.html">Kurallar (SRD)</a>
+                        <a href="tim-kur.html">Tim Kur</a>
+                        <a href="kaynaklar.html">Minyatürler & STL</a>
+                        <a href="terimce.html">Terimce</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Topluluk</h4>
+                        <a href="#">Discord</a>
+                        <a href="#">Reddit</a>
+                        <a href="https://github.com">GitHub</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Hakkında</h4>
+                        <a href="#">Lisans (CC0)</a>
+                        <a href="#">Katkıda Bulunun</a>
+                        <a href="#">İletişim</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler Games Workshop Ltd.'nin ticari markalarıdır. Fan yapımı, eğitim amaçlı içerik.</p>
+                <p class="footer-license"><strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Özgürce kullanın, paylaşın, değiştirin.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

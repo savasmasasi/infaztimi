@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39,000: İnfaz Timi - Türkçe Taktiksel Savaş Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Hero with background image */
+        .hero {
+            position: relative;
+            background: #111 url('hero-bg.jpg') center center / cover no-repeat;
+            padding: 6rem 0 5rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            background: rgba(220, 78, 40, 0.25);
+            border: 1px solid rgba(220, 78, 40, 0.6);
+            color: #dc4e28;
+        }
+        .hero-number { color: #ffffff; }
+        .hero-subtitle { color: #dc4e28; }
+        .hero-description { color: rgba(255,255,255,0.85); }
+        .btn-primary {
+            background: #dc4e28;
+            border-color: #dc4e28;
+            color: #fff;
+        }
+        .btn-secondary {
+            background: transparent;
+            border-color: rgba(255,255,255,0.5);
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+        .hero-meta { color: rgba(255,255,255,0.5); }
+        .meta-item svg { opacity: 0.5; fill: #fff; }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link">Mahşer</a>
+                <a href="srd.html" class="nav-link">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">ÜCRETSİZ • CC0 LİSANSLI • TÜRKÇE</div>
+            <h1 class="hero-title">
+                <span class="hero-number">39,000</span>
+                <span class="hero-subtitle">İNFAZ TİMİ</span>
+            </h1>
+            <p class="hero-description">
+                Geleceğin kara kasvetinde yalnızca savaş var. 
+				<br>Mahşer'in kıyısında müfreze savaşları. 
+                <br>İnfaz timini kur, göreve başla.
+            </p>
+            <div class="hero-actions">
+                <a href="srd.html" class="btn btn-primary">Kurallara Gözat</a>
+                <a href="39k-infaz-timi.pdf" class="btn btn-secondary">PDF İndir</a>
+            </div>
+            <div class="hero-meta">
+                <span class="meta-item">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    GitHub'da Açık Kaynak
+                </span>
+                <span class="meta-item">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                    </svg>
+                    CC0 Lisanslı
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="feature-section">
+            <div class="container">
+                <h2 class="section-title">Cehennemin Dibi</h2>
+                <div class="split-block" style="margin-bottom: 3rem;">
+                    <div class="split-text">
+                        <p>
+                            <strong>Mahşer</strong>, Dünya'nın kuzeydoğusunda, otuz dokuz bin ışık yılı ötede süzülmektedir. 
+                            Yüzlerce milyar insanın çalıştığı dev fabrika kentleri — kovankentler — gezegenin 
+                            yüzeyini kaplar. Bu kentlerin imalathaneleri, binlerce ışık yılı uzaktaki orduları 
+                            silahlandırır. Mahşer kaybedilirse İmparatorluk'un gücü büyük bir darbe yer.
+                        </p>
+                        <p>
+                            <strong>Prometyum Ağı</strong>, kovankentin temel ile çatı arasında uzanan dev boru-bağlantı ağıdır. 
+                            Asırlarca eklenip değiştirilen bu labirent: dar tüneller, sonsuz derinlikteki uçurumlar, 
+                            çöken tavanlar, zehirli gaz bulutları ve yüzyıllardır kimsenin açmadığı kapalı 
+                            kapılardan oluşur.
+                        </p>
+                        <p>
+                            <strong>Her iki tarafın infaz timleri bu karanlık ağda birbirini avlıyor.</strong> Yakıt depoları ele geçiriliyor 
+                            ya da tahrip ediliyor. Eski silah kasaları zorla açılıyor. İnfaz timleri, daha güçlü bir 
+                            düşmanla yüz yüze gelmekten kaçınmak için kilometrelerce boru boyunca sürünüyor.
+                        </p>
+                    </div>
+                    <div class="split-image">
+                        <img src="cehennemin-dibi.jpg" alt="Mahşer Kovankenti">
+                    </div>
+                </div>
+
+                <h2 class="section-title">Özellikler</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📖</div>
+                        <h3 class="feature-title">Tam SRD</h3>
+                        <p class="feature-description">
+                            Tüm temel kurallar, özellikler, hareket, atış ve dövüş mekanikleri. 
+                            Tamamen ücretsiz, tamamen Türkçe.
+                        </p>
+                        <a href="srd.html" class="feature-link">Kurallara Git →</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">⚔️</div>
+                        <h3 class="feature-title">Tim Kur</h3>
+                        <p class="feature-description">
+                            İnteraktif tim kurucu ile infaz timini oluştur. Savaşçı ekle, 
+                            ekipman seç, puanları hesapla.
+                        </p>
+                        <a href="tim-kur.html" class="feature-link">Tim Kur →</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎲</div>
+                        <h3 class="feature-title">Minyatürler & STL</h3>
+                        <p class="feature-description">
+                            Games Workshop kutu setleri, 3D basılabilir STL dosyaları ve arazi parçaları. 
+                            Yerel satıcı linkleri ile.
+                        </p>
+                        <a href="kaynaklar.html" class="feature-link">Kaynaklara Bak →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="split-block split-block--reverse">
+                    <div class="split-image">
+                        <img src="neden.jpg" alt="39,000: İnfaz Timi">
+                    </div>
+                    <div class="split-text">
+                        <h2 class="section-title">Neden 39,000: İnfaz Timi?</h2>
+                        <p>
+                            Warhammer evreninin zengin hikayelerini ve taktiksel derinliğini Türkçe olarak 
+                            deneyimlemek isteyenler için tasarlandı. Shadow War: Armageddon'un mekanikleri 
+                            üzerine kurulu bu oyun, küçük ölçekli, anlatı odaklı kampanyalar için idealdir.
+                        </p>
+                        <p>
+                            Tamamen ücretsiz, açık lisanslı (CC0) ve topluluk odaklı. İster deneyimli bir 
+                            oyuncu olun, ister hobi dünyasına yeni adım atıyor olun, bu kaynaklar sizin için.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Ücretsiz</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">CC0</div>
+                                <div class="stat-label">Açık Lisans</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">TR</div>
+                                <div class="stat-label">Türkçe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-section">
+            <div class="container">
+                <h2 class="section-title">Topluluk</h2>
+                <p class="section-description">
+                    Türkiye'deki Warhammer topluluğuna katılın. Soru sorun, takımlarınızı paylaşın, 
+                    maçlar düzenleyin.
+                </p>
+                <div class="community-links">
+                    <a href="https://discord.gg/x9WjgdqbX3" class="community-card">
+                        <div class="community-icon discord">
+                            <svg width="32" height="32" viewBox="0 0 71 55" fill="currentColor">
+                                <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="community-title">Discord</h3>
+                        <p class="community-description">Sohbet edin, soru sorun, maç bulun</p>
+                    </a>
+
+                    <a href="https://www.reddit.com/r/Warhammer40KTR/" class="community-card">
+                        <div class="community-icon reddit">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                            </svg>
+                        </div>
+                        <h3 class="community-title">Reddit</h3>
+                        <p class="community-description">Tartışmalar, stratejiler, paylaşımlar</p>
+                    </a>
+
+                    <a href="https://github.com/savasmasasi/infaztimi" class="community-card">
+                        <div class="community-icon github">
+                            <svg width="32" height="32" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="community-title">GitHub</h3>
+                        <p class="community-description">Kaynak kodu, katkıda bulunun</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                    <p class="footer-tagline">
+                        Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Kaynaklar</h4>
+                        <a href="mahser.html">Mahşer (Lore)</a>
+                        <a href="srd.html">Kurallar (SRD)</a>
+                        <a href="39k-infaz-timi.pdf">PDF İndir</a>
+                        <a href="tim-kur.html">Tim Kur</a>
+                        <a href="kaynaklar.html">Minyatürler & STL</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Topluluk</h4>
+                        <a href="https://discord.gg/x9WjgdqbX3">Discord</a>
+                        <a href="https://www.reddit.com/r/Warhammer40KTR/">Reddit</a>
+						<a href="https://www.youtube.com/@savasmasasi">YouTube</a>
+                        <a href="https://github.com/savasmasasi/infaztimi">GitHub</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Hakkında</h4>
+                        <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.tr">Lisans (CC0)</a>
+                        <a href="#">Katkıda Bulunun</a>
+                        <a href="mailto:savasmasasi@gmail.com">İletişim</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler 
+                    Games Workshop Ltd.'nin ticari markalarıdır. Fan yapımı, eğitim amaçlı içerik.
+                </p>
+                <p class="footer-license">
+                    <strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Özgürce kullanın, paylaşın, 
+                    değiştirin. Tüm illüstrasyonlar <a href="https://www.patreon.com/c/brushray/posts?filters%5Btag%5D=warhammer40k" target="_blank" rel="noopener">Dmitry Brushray</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

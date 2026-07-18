@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STL Dosyaları - 39,000: İnfaz Timi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── STL PAGE SPECIFIC ────────────────────────────────── */
+
+        /* Two-column layout: TOC sidebar + content */
+        .stl-layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            min-height: calc(100vh - 56px);
+        }
+
+        /* Sidebar TOC — same stamp-index pattern as SRD */
+        .stl-toc {
+            position: sticky;
+            top: var(--nav-h);
+            height: calc(100vh - var(--nav-h));
+            overflow-y: auto;
+            background: var(--ink-raised);
+            border-right: 4px solid var(--ember);
+            box-shadow: 4px 0 0 0 var(--ink-edge);
+            display: flex;
+            flex-direction: column;
+        }
+        .stl-toc::-webkit-scrollbar { width: 4px; }
+        .stl-toc::-webkit-scrollbar-track { background: var(--ink-raised); }
+        .stl-toc::-webkit-scrollbar-thumb { background: var(--ink-rule); }
+
+        .stl-toc__header {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ember);
+            padding: 1.25rem 1rem 0.75rem;
+            border-bottom: 2px solid var(--ink-edge);
+            background: var(--ink);
+        }
+
+        .stl-toc__group-title {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+            padding: 0.6rem 1rem 0.25rem;
+            background: var(--ink);
+            border-bottom: 1px solid var(--ink-edge);
+        }
+
+        .stl-toc a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--paper-ghost);
+            border-bottom: 1px solid var(--ink-edge);
+            transition: background 0.12s, color 0.12s;
+            text-decoration: none;
+        }
+        .stl-toc a::before {
+            content: '//';
+            font-size: 0.55rem;
+            color: var(--ink-rule);
+            flex-shrink: 0;
+            transition: color 0.12s;
+        }
+        .stl-toc a:hover {
+            background: var(--ink-edge);
+            color: var(--paper);
+        }
+        .stl-toc a:hover::before { color: var(--ember); }
+
+        /* Main content */
+        .stl-main {
+            padding: 2.5rem 2.5rem 4rem;
+            max-width: 900px;
+        }
+
+        /* Faction section */
+        .faction-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: calc(var(--nav-h) + 1rem);
+        }
+
+        .faction-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 1.9rem);
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white-cold);
+            padding-top: 0.6rem;
+            border-top: 4px solid var(--ember);
+            border-bottom: 1px solid var(--ink-rule);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faction-gw {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--paper-ghost);
+            margin-bottom: 1rem;
+        }
+
+        /* STL link list */
+        .stl-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .stl-entry {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem 1rem;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-rule);
+            text-decoration: none;
+            transition: background 0.12s, border-color 0.12s;
+            position: relative;
+        }
+        .stl-entry::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--ember);
+            opacity: 0;
+            transition: opacity 0.12s;
+        }
+        .stl-entry:hover {
+            background: var(--ink-edge);
+            border-color: var(--ember-rule);
+        }
+        .stl-entry:hover::before { opacity: 1; }
+
+        /* Platform badge */
+        .stl-platform {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.45rem;
+            border: 1px solid var(--ink-rule);
+            color: var(--paper-ghost);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .stl-platform--mmf  { color: #e8a020; border-color: rgba(232,160,32,0.3); }
+        .stl-platform--c3d  { color: #e05c1a; border-color: rgba(224,92,26,0.3); }
+        .stl-platform--tgv  { color: #4aab8f; border-color: rgba(74,171,143,0.3); }
+
+        /* Link name */
+        .stl-name {
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--paper-dim);
+            line-height: 1.3;
+        }
+        .stl-entry:hover .stl-name { color: var(--paper); }
+
+        /* Free / Paid tag */
+        .stl-price {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .stl-price--free {
+            color: #5ab87a;
+            border: 1px solid rgba(90,184,122,0.35);
+            background: rgba(90,184,122,0.08);
+        }
+        .stl-price--paid {
+            color: var(--paper-ghost);
+            border: 1px solid var(--ink-rule);
+        }
+
+        /* Legend */
+        .stl-legend {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            padding: 0.75rem 1rem;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-rule);
+            border-left: 4px solid var(--ember);
+            margin-bottom: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: var(--paper-ghost);
+            align-items: center;
+        }
+        .stl-legend strong {
+            color: var(--paper-dim);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+        }
+
+        /* Terrain placeholder */
+        .terrain-placeholder {
+            background: var(--ink-raised);
+            border: 2px dashed var(--ink-rule);
+            border-top: 4px solid var(--ember);
+            padding: 2rem;
+            text-align: center;
+        }
+        .terrain-placeholder p {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--paper-ghost);
+            letter-spacing: 0.06em;
+        }
+        .terrain-placeholder strong {
+            color: var(--ember);
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .stl-layout { grid-template-columns: 1fr; }
+            .stl-toc { display: none; }
+            .stl-main { padding: 1.5rem 1rem 3rem; }
+        }
+    </style>
+</head>
+<body class="resources-page">
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link">Mahşer</a>
+                <a href="srd.html" class="nav-link">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link active">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-header__title">STL DOSYALARI</h1>
+        <p class="page-header__sub">Faksiyona göre proxy minyatür STL bağlantıları — MyMiniFactory, Cults3D, Thingiverse</p>
+    </header>
+
+    <div class="stl-layout">
+
+        <!-- ── SIDEBAR TOC ───────────────────────────────────── -->
+        <aside class="stl-toc">
+            <div class="stl-toc__header">Faksiyonlar</div>
+
+            <span class="stl-toc__group-title">İmparatorluk</span>
+            <a href="#scouts">Uzay Komandosu İzcileri</a>
+            <a href="#guard">İmparatorluk Muhafızları</a>
+            <a href="#sisters">Muharip Rahibeler</a>
+            <a href="#grey-knights">Bozfarisler</a>
+            <a href="#inquisition">Engizisyon</a>
+            <a href="#admech">Teknokratlar</a>
+
+            <span class="stl-toc__group-title">Kaos & Sapkın</span>
+            <a href="#csm">Kaos Komandoları</a>
+            <a href="#gsc">Genuğru Tarikatı</a>
+
+            <span class="stl-toc__group-title">Zenoidler</span>
+            <a href="#orks">Ork Veletleri</a>
+            <a href="#aeldari">Hünerdiyar Ælfleri</a>
+            <a href="#drukhari">Kara Ælfler</a>
+            <a href="#harlequins">Alacalar</a>
+            <a href="#necrons">Duatlar</a>
+            <a href="#tau">Tiān Kaşifleri</a>
+            <a href="#tyranids">Tiranidler</a>
+
+            <span class="stl-toc__group-title">Arazi</span>
+            <a href="#arazi">Arazi STL Dosyaları</a>
+        </aside>
+
+        <!-- ── MAIN CONTENT ──────────────────────────────────── -->
+        <main class="stl-main">
+
+            <div class="stl-legend">
+                <strong>Platform:</strong>
+                <span class="stl-platform stl-platform--mmf">MMF</span> MyMiniFactory &nbsp;
+                <span class="stl-platform stl-platform--c3d">C3D</span> Cults3D &nbsp;
+                <span class="stl-platform stl-platform--tgv">TGV</span> Thingiverse
+                &nbsp;&nbsp;
+                <strong>Fiyat:</strong>
+                <span class="stl-price stl-price--free">Ücretsiz</span>
+                <span class="stl-price stl-price--paid">Ücretli</span>
+            </div>
+
+            <!-- ══ UZAY KOMANDOSU İZCİLERİ ══ -->
+            <section class="faction-section" id="scouts">
+                <h2 class="faction-heading">Uzay Komandosu İzcileri</h2>
+                <div class="faction-gw">GW Karşılığı: Space Marine Scouts</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/trainees-of-the-crusade" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Trainees of the Crusade</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/ironwrought-brigade-pathfinder-modular-maker" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Ironwrought Brigade Pathfinder Modular Maker</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-armatis-mors-scouts-squad-x6-324792" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Armatis Mors Scouts Squad ×6</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-thunder-recon-earth-assault-scout-ranger-s-squad-365556" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Thunder Recon Earth Assault Scout Ranger Squad</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-imperial-marines-scout-squad-265479" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Imperial Marines Scout Squad</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.thingiverse.com/thing:6157744" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--tgv">TGV</span>
+                        <span class="stl-name">Scout Proxies (Thing:6157744)</span>
+                        <span class="stl-price stl-price--free">Ücretsiz</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/intersection-kill-squad/makes" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Intersection Kill Squad</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ İMPARATORLUK MUHAFIZLARI ══ -->
+            <section class="faction-section" id="guard">
+                <h2 class="faction-heading">İmparatorluk Muhafızları</h2>
+                <div class="faction-gw">GW Karşılığı: Astra Militarum / Imperial Guard</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/imperial-solar-void-guardsmen" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Imperial Solar Void Guardsmen</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.thingiverse.com/thing:4233544" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--tgv">TGV</span>
+                        <span class="stl-name">Guard Proxies (Thing:4233544)</span>
+                        <span class="stl-price stl-price--free">Ücretsiz</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.thingiverse.com/thing:3412466" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--tgv">TGV</span>
+                        <span class="stl-name">Guard Proxies (Thing:3412466)</span>
+                        <span class="stl-price stl-price--free">Ücretsiz</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.thingiverse.com/thing:3341423" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--tgv">TGV</span>
+                        <span class="stl-name">Guard Proxies (Thing:3341423)</span>
+                        <span class="stl-price stl-price--free">Ücretsiz</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/steel-guard-squad-of-the-imperial-force" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Steel Guard Squad of the Imperial Force</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/rundsgaard-main-troop" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Rundsgaard Main Troop</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/squad-khaleeth-regiment-imperial-guard" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Squad Khaleeth Regiment Imperial Guard</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-special-forces-elite-squad-of-the-imperial-force-190907" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Special Forces Elite Squad of the Imperial Force</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-elite-kill-squad-expansion-x15-kaledon-fortis-346298" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Elite Kill Squad Expansion ×15 — Kaledon Fortis</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-grimguard-starter-pack-782030" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Grimguard Starter Pack</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ MUHARİP RAHİBELER ══ -->
+            <section class="faction-section" id="sisters">
+                <h2 class="faction-heading">Muharip Rahibeler</h2>
+                <div class="faction-gw">GW Karşılığı: Adepta Sororitas / Sisters of Battle</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-sisters-battle-squad-bikini-burnout-cyber-forge-miniatures-september-2024-411321" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Sisters Battle Squad — Cyber Forge (Eylül 2024)</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/space-nuns-sinners" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Space Nuns — Sinners</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/space-nuns-nuncarriers" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Space Nuns — Nuncarriers</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-blessed-sisters-army-bundle-1-306840" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Blessed Sisters Army Bundle 1</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ BOZFARİSLER ══ -->
+            <section class="faction-section" id="grey-knights">
+                <h2 class="faction-heading">Bozfarisler</h2>
+                <div class="faction-gw">GW Karşılığı: Grey Knights</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/silver-wardens-cap-kit" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Silver Wardens Cap Kit</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-barakan-menace-squad-2-0-project-morningstar-759025" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Barakan Menace Squad 2.0 — Project Morningstar</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ ENGİZİSYON ══ -->
+            <section class="faction-section" id="inquisition">
+                <h2 class="faction-heading">Engizisyon</h2>
+                <div class="faction-gw">GW Karşılığı: Agents of the Imperium / Inquisition</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-witch-hunters-218211" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Witch Hunters</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ TEKNOKRATLAR ══ -->
+            <section class="faction-section" id="admech">
+                <h2 class="faction-heading">Teknokratlar</h2>
+                <div class="faction-gw">GW Karşılığı: Adeptus Mechanicus</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-infantry-builder-kit-372006" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Infantry Builder Kit</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-volatiles-infantry-402031" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Volatiles Infantry</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-sanctum-infantry-711167" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Sanctum Infantry</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-monks-452018" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Monks</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-octapods-430944" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Octapods</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/rustmonger-troopers-set" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Rustmonger Troopers Set</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-scavenger-starter-pack-782038" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Scavenger Starter Pack</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ KAOS KOMANDOLARI ══ -->
+            <section class="faction-section" id="csm">
+                <h2 class="faction-heading">Kaos Komandoları</h2>
+                <div class="faction-gw">GW Karşılığı: Chaos Space Marines</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/legionarres-mash-up" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Legionarres Mash-Up</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-chainlords-chaos-space-knights-411227" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Chainlords Chaos Space Knights</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-skinreavers-chaos-space-knights-486769" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Skinreavers Chaos Space Knights</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-ironflayers-chaos-space-knights-625731" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Ironflayers Chaos Space Knights</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ GENUĞRU TARİKATI ══ -->
+            <section class="faction-section" id="gsc">
+                <h2 class="faction-heading">Genuğru Tarikatı</h2>
+                <div class="faction-gw">GW Karşılığı: Genestealer Cults</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/genethieves-brood" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Genethieves Brood</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/twisted-stealers-and-apex-hunter-leader" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Twisted Stealers and Apex Hunter Leader</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-corrupted-guard-sectarians-293075" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Corrupted Guard Sectarians</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ ORK VELETLERİ ══ -->
+            <section class="faction-section" id="orks">
+                <h2 class="faction-heading">Ork Veletleri</h2>
+                <div class="faction-gw">GW Karşılığı: Orks</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-aaarrggg-ourk-beastly-boiz-420329" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Aaarrggg Ourk Beastly Boiz</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-mrmodulork-s-orc-monster-hunters-modular-kit-a-201670" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">MrModulOrk's Orc Monster Hunters Modular Kit A</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-mrmodulork-s-orc-pop-huntaz-779806" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">MrModulOrk's Orc Pop Huntaz</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-mrmodulork-s-orc-rokkaboys-310451" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">MrModulOrk's Orc Rokkaboys</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-mrmodulork-s-zerka-orcs-454820" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">MrModulOrk's Zerka Orcs</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-mrmodulork-s-demolition-orc-ladz-281738" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">MrModulOrk's Demolition Orc Ladz</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/multi-part-retro-space-orcs" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Multi-Part Retro Space Orcs</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-orkaz-starter-pack-782035" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Orkaz Starter Pack</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ HÜNERDİYAR ÆLFLERİ ══ -->
+            <section class="faction-section" id="aeldari">
+                <h2 class="faction-heading">Hünerdiyar Ælfleri</h2>
+                <div class="faction-gw">GW Karşılığı: Aeldari / Craftworlds</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/space-elves-spirit-guardians-proxy-miniatures" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Space Elves Spirit Guardians Proxy Miniatures</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/spirit-guardian-warriors-ttrpg-wargame-proxies" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Spirit Guardian Warriors TTRPG/Wargame Proxies</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/poncey-space-elf-infantry-shooters" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Poncey Space Elf Infantry Shooters</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-high-elf-fleets-release-1-362576" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">High Elf Fleets Release 1</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ KARA ÆLFLER ══ -->
+            <section class="faction-section" id="drukhari">
+                <h2 class="faction-heading">Kara Ælfler</h2>
+                <div class="faction-gw">GW Karşılığı: Drukhari</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-void-elves-bundle-22-unique-pre-supported-stls-697627" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Void Elves Bundle — 22 Unique Pre-Supported STLs</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ ALACALAR ══ -->
+            <section class="faction-section" id="harlequins">
+                <h2 class="faction-heading">Alacalar</h2>
+                <div class="faction-gw">GW Karşılığı: Harlequins</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/dark-jesters-elves" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Dark Jesters Elves</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ DUATLAR ══ -->
+            <section class="faction-section" id="necrons">
+                <h2 class="faction-heading">Duatlar</h2>
+                <div class="faction-gw">GW Karşılığı: Necrons</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-robot-legions-release-1-147599" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Robot Legions Release 1</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ TIĀN KAŞİFLERİ ══ -->
+            <section class="faction-section" id="tau">
+                <h2 class="faction-heading">Tiān Kaşifleri</h2>
+                <div class="faction-gw">GW Karşılığı: T'au Empire</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/greater-good-ashigaru-battle-fires-t2" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Greater Good Ashigaru Battle Fires T2</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/space-communist-human-auxiliary-carbine-infantry-squad" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Space Communist Human Auxiliary Carbine Infantry Squad</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/space-communist-human-auxiliary-rifle-infantry-squad" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Space Communist Human Auxiliary Rifle Infantry Squad</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/cn/object/3d-print-eternal-dynasty-release-4-217722" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Eternal Dynasty Release 4</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-eternal-dynasty-army-bundle-1-217726" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Eternal Dynasty Army Bundle 1</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-wayfairers-confederation-scouts-255807" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Wayfairers Confederation Scouts</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ TİRANİDLER ══ -->
+            <section class="faction-section" id="tyranids">
+                <h2 class="faction-heading">Tiranidler</h2>
+                <div class="faction-gw">GW Karşılığı: Tyranids</div>
+                <div class="stl-list">
+                    <a class="stl-entry" href="https://cults3d.com/en/3d-model/game/free-brood-little-space-bugs-modern" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--c3d">C3D</span>
+                        <span class="stl-name">Free Brood — Little Space Bugs Modern</span>
+                        <span class="stl-price stl-price--free">Ücretsiz</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-alien-hives-army-bundle-1-317320" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Alien Hives Army Bundle 1</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-alien-hives-army-bundle-2-317328" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Alien Hives Army Bundle 2</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                    <a class="stl-entry" href="https://www.myminifactory.com/object/3d-print-alien-hives-army-bundle-3-317397" target="_blank" rel="noopener">
+                        <span class="stl-platform stl-platform--mmf">MMF</span>
+                        <span class="stl-name">Alien Hives Army Bundle 3</span>
+                        <span class="stl-price stl-price--paid">Ücretli</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ══ ARAZİ STL ══ -->
+            <section class="faction-section" id="arazi">
+                <h2 class="faction-heading">Arazi STL Dosyaları</h2>
+                <div class="faction-gw">Kovankent, Endüstriyel & Prometyum Ağı Araziyi</div>
+                <div class="terrain-placeholder">
+                    <strong>Yakında</strong>
+                    <p>Arazi STL bağlantıları buraya eklenecektir.<br>Kovankent platformları, boru hatları, duvarlar ve kapılar.</p>
+                </div>
+            </section>
+
+        </main>
+    </div><!-- /.stl-layout -->
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                    <p class="footer-tagline">Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Kaynaklar</h4>
+                        <a href="mahser.html">Mahşer (Lore)</a>
+                        <a href="srd.html">Kurallar (SRD)</a>
+                        <a href="#">PDF İndir</a>
+                        <a href="tim-kur.html">Tim Kur</a>
+                        <a href="kaynaklar.html">Minyatürler & STL</a>
+                        <a href="boyama.html">Boyama Rehberi</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Topluluk</h4>
+                        <a href="#">Discord</a>
+                        <a href="#">Reddit</a>
+                        <a href="https://github.com">GitHub</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Hakkında</h4>
+                        <a href="#">Lisans (CC0)</a>
+                        <a href="#">Katkıda Bulunun</a>
+                        <a href="#">İletişim</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler Games Workshop Ltd.'nin ticari markalarıdır. Fan yapımı, eğitim amaçlı içerik.</p>
+                <p class="footer-license"><strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Özgürce kullanın, paylaşın, değiştirin.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+/* ============================================================
+   39,000: İNFAZ TİMİ — SRD-STYLE.CSS
+   Supplementary stylesheet for the rulebook (srd.html).
+   Builds on top of style.css tokens.
+   ============================================================ */
+
+/* ─── CHARACTERISTICS TABLE ───────────────────────────────── */
+/*
+   The stat block is the core UI atom of any rulebook.
+   Styled as a field-manual data stamp — flat grid,
+   heavy column rules, mono header labels.
+*/
+.stat-block {
+    border: 2px solid var(--ink-rule);
+    border-top: 4px solid var(--ember);
+    background: var(--ink-raised);
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.stat-block table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stat-block thead tr {
+    background: var(--ink);
+    border-bottom: 2px solid var(--ember);
+}
+
+.stat-block th {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ember);
+    padding: 0.45rem 0.75rem;
+    text-align: center;
+    border-right: 1px solid var(--ink-edge);
+}
+.stat-block th:first-child { text-align: left; }
+.stat-block th:last-child { border-right: none; }
+
+.stat-block td {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--paper);
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+    border-right: 1px solid var(--ink-edge);
+    border-bottom: 1px solid var(--ink-edge);
+}
+.stat-block td:first-child {
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white-cold);
+}
+.stat-block td:last-child { border-right: none; }
+.stat-block tr:last-child td { border-bottom: none; }
+
+/* ─── CHARACTERISTICS LEGEND ──────────────────────────────── */
+.char-legend {
+    background: var(--ink);
+    border: 1px solid var(--ink-rule);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+}
+
+.char-legend dt {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ember);
+    float: left;
+    width: 3.5rem;
+    clear: left;
+    margin-bottom: 0.4rem;
+}
+
+.char-legend dd {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--paper-dim);
+    margin-left: 3.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+/* ─── WEAPON TABLES ───────────────────────────────────────── */
+.weapon-table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 2px solid var(--ink-rule);
+}
+
+.weapon-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    min-width: 560px;
+}
+
+.weapon-table thead tr {
+    background: var(--ink);
+    border-bottom: 3px solid var(--ember);
+}
+
+.weapon-table th {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ember);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.weapon-table td {
+    padding: 0.5rem 0.75rem;
+    color: var(--paper-dim);
+    border-bottom: 1px solid var(--ink-edge);
+    white-space: nowrap;
+}
+
+.weapon-table td:first-child {
+    color: var(--white-cold);
+    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: normal;
+}
+
+.weapon-table tbody tr:hover td {
+    background: var(--ink-raised);
+}
+
+/* special rule inline tag */
+.rule-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ember);
+    border: 1px solid var(--ember-rule);
+    background: var(--ember-trace);
+    padding: 0.1rem 0.4rem;
+    margin-left: 0.2rem;
+    vertical-align: middle;
+}
+
+/* ─── SCENARIO CARD ───────────────────────────────────────── */
+.scenario-card {
+    background: var(--ink-raised);
+    border: 2px solid var(--ink-rule);
+    border-top: 4px solid var(--ember);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.scenario-card::after {
+    content: attr(data-num);
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(220, 78, 40, 0.08);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.scenario-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white-cold);
+    margin-bottom: 0.25rem;
+}
+
+.scenario-type {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.75rem;
+}
+
+.scenario-card p {
+    color: var(--paper-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+/* ─── INJURY TABLE ────────────────────────────────────────── */
+.injury-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+}
+
+.injury-table thead tr {
+    background: var(--ink);
+    border-bottom: 3px solid var(--ember);
+}
+
+.injury-table th {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ember);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.injury-table td {
+    padding: 0.55rem 0.75rem;
+    color: var(--paper-dim);
+    border-bottom: 1px solid var(--ink-edge);
+    font-size: 0.9rem;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.injury-table td:first-child {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--white-cold);
+    white-space: nowrap;
+}
+
+.injury-table td:nth-child(2) {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ember);
+    white-space: nowrap;
+}
+
+.injury-table tbody tr:hover td { background: var(--ink-raised); }
+
+/* ─── CAMPAIGN PROGRESSION ────────────────────────────────── */
+.xp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+}
+
+.xp-table thead tr {
+    background: var(--ink);
+    border-bottom: 3px solid var(--ember);
+}
+
+.xp-table th {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ember);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.xp-table td {
+    padding: 0.5rem 0.75rem;
+    color: var(--paper-dim);
+    border-bottom: 1px solid var(--ink-edge);
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+
+.xp-table td:first-child {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--ember);
+    white-space: nowrap;
+}
+
+.xp-table tbody tr:hover td { background: var(--ink-raised); }
+
+/* ─── WARBAND ROSTER BOX ──────────────────────────────────── */
+.roster-header {
+    background: var(--ink);
+    border: 2px solid var(--ink-rule);
+    border-top: 4px solid var(--ember);
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+}
+
+.roster-header + .stat-block { margin-top: 0; border-top: none; }
+
+.roster-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white-cold);
+    line-height: 1.1;
+}
+
+.roster-type {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-top: 0.2rem;
+}
+
+.roster-cost {
+    text-align: right;
+}
+
+.roster-cost .cost-val {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--ember);
+    line-height: 1;
+}
+
+.roster-cost .cost-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-ghost);
+}
+
+/* ─── NUMBERED RULE PARAGRAPHS ────────────────────────────── */
+/* When sections have sequenced steps or numbered sub-rules */
+.numbered-rules {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    counter-reset: rule-counter;
+}
+
+.numbered-rules li {
+    counter-increment: rule-counter;
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--ink-edge);
+    background: var(--ink-raised);
+    margin-bottom: 2px;
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    color: var(--paper-dim);
+    line-height: 1.65;
+    position: relative;
+}
+
+.numbered-rules li::before {
+    content: counter(rule-counter, decimal-leading-zero);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: var(--ember);
+    flex-shrink: 0;
+    min-width: 2rem;
+    line-height: 1.65;
+}
+
+/* ─── PHASE TRACKER ───────────────────────────────────────── */
+/* Turn sequence shown as horizontal phase strip */
+.phase-strip {
+    display: flex;
+    gap: 0;
+    margin: 1.5rem 0;
+    border: 2px solid var(--ink-rule);
+    overflow-x: auto;
+}
+
+.phase {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.75rem 0.5rem;
+    border-right: 2px solid var(--ink-rule);
+    background: var(--ink-raised);
+    text-align: center;
+}
+.phase:last-child { border-right: none; }
+
+.phase-num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--ember);
+    line-height: 1;
+    display: block;
+}
+
+.phase-name {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-ghost);
+    margin-top: 0.2rem;
+    display: block;
+    line-height: 1.3;
+}
+
+/* ─── SRD-PAGE SPECIFIC OVERRIDES ─────────────────────────── */
+
+/* Print hints — keep the document feel on screen */
+@media print {
+    .main-nav,
+    .srd-sidebar,
+    .sidebar-footer { display: none; }
+
+    .srd-container { display: block; }
+    .srd-content { padding: 0; }
+
+    .section-heading {
+        page-break-before: always;
+        padding-top: 1rem;
+    }
+
+    body {
+        background: white;
+        color: #111;
+    }
+
+    :root {
+        --ink: white;
+        --ink-raised: #f4f4f4;
+        --ink-edge: #ddd;
+        --ink-rule: #ccc;
+        --paper: #111;
+        --paper-dim: #333;
+        --paper-ghost: #555;
+        --ember: #c0391a;
+        --white-cold: #000;
+    }
+}

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahşer Sistemi - 39,000: İnfaz Timi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* All layout overrides — colours from style.css tokens */
+
+        /* ===== PAGE LAYOUT ===== */
+        .lore-layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            max-width: 100%;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .lore-main {
+            padding: 0 3rem 4rem;
+            max-width: 820px;
+        }
+
+        /* ===== IMAGES ===== */
+        .lore-img { margin: 1.5rem 0; }
+        .lore-img img {
+            width: 100%;
+            height: auto;
+            border: 2px solid var(--ink-rule);
+        }
+        .lore-img figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--paper-ghost);
+            text-align: center;
+            margin-top: 0.4rem;
+        }
+
+        /* ===== SECRET / HIDDEN LORE ===== */
+        .secret {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-rule);
+            border-left: 4px solid var(--ember);
+            padding: 1.15rem 1.4rem;
+            margin: 0.75rem 0;
+        }
+        .secret .s-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--ember);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .secret p { color: var(--paper-dim); margin-bottom: 0.4rem; }
+        .secret p:last-child { margin-bottom: 0; }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            margin: 1.25rem 0;
+            padding-left: 1.25rem;
+            border-left: 2px solid var(--ember-rule);
+        }
+        .tl-entry {
+            position: relative;
+            margin-bottom: 1.1rem;
+            padding-left: 0.9rem;
+        }
+        .tl-entry::before {
+            content: '';
+            position: absolute;
+            left: -1.6rem;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background: var(--ember);
+            border-radius: 50%;
+        }
+        .tl-date {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--ember);
+            margin-bottom: 0.15rem;
+        }
+        .tl-entry p { font-size: 0.92rem; margin-bottom: 0; color: var(--paper-dim); }
+
+        /* ===== SYSTEM TABLE ===== */
+        .sys-tbl {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+            font-size: 0.82rem;
+        }
+        .sys-tbl thead tr {
+            background: var(--ink);
+            border-bottom: 3px solid var(--ember);
+        }
+        .sys-tbl th {
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-align: left;
+            padding: 0.45rem 0.5rem;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--ember);
+        }
+        .sys-tbl td {
+            padding: 0.4rem 0.5rem;
+            border-bottom: 1px solid var(--ink-edge);
+            color: var(--paper-dim);
+        }
+        .sys-tbl tbody tr:hover td { background: var(--ink-raised); }
+        .sys-tbl .pn { font-weight: 600; color: var(--white-cold); }
+        .sys-tbl .pt {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--paper-ghost);
+        }
+
+        /* ===== SEPARATOR ===== */
+        hr.sep {
+            border: none;
+            border-top: 3px solid var(--ember);
+            box-shadow: 0 3px 0 0 var(--ink-edge);
+            margin: 2.5rem 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .lore-layout { grid-template-columns: 1fr; }
+            .toc-rail { display: none; }
+            .lore-main { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 600px) {
+            .page-header { padding: 2rem 1.25rem; }
+            .lore-main { padding: 1.5rem 1rem; }
+            .sec-head h2 { font-size: 1.5rem; }
+            .fc { padding: 1rem; }
+            .dtable { font-size: 0.72rem; }
+            .dtable th, .dtable td { padding: 0.3rem 0.35rem; }
+        }
+    </style>
+</head>
+<body class="lore-page">
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-number">39,000</span>
+                <span class="nav-title">İNFAZ TİMİ</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="mahser.html" class="nav-link active">Mahşer</a>
+                <a href="srd.html" class="nav-link">Kurallar (SRD)</a>
+                <a href="tim-kur.html" class="nav-link">Tim Kur</a>
+                <a href="kaynaklar.html" class="nav-link">Kaynaklar</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-header">
+        <h1 class="page-header__title">MAHŞER SİSTEMİ</h1>
+        <p class="page-header__sub">Bir yıldız sistemi. On gezegen. On beş taraf. Tek bir savaş alanı.</p>
+        <div class="epigraph">
+            <p>"Köz yıldızı muhakkak ki sönmektedir. Lakin bu sistemdeki ölümler ondan çok daha evvelinden beridir gerçekleşmektedir."</p>
+            <div class="ep-src">— Tahkikçi Thessaly Vorn, Ordo Xenos, şifreli kişisel günlük, 998.M41</div>
+        </div>
+    </header>
+
+    <!-- LAYOUT -->
+    <div class="lore-layout">
+
+        <!-- TOC -->
+        <aside class="toc-rail">
+            <h3>İçindekiler</h3>
+            <div class="toc-group"><a href="#sistem" class="toc-group-title">Sistem Haritası</a></div>
+            <div class="toc-group"><a href="#yildiz" class="toc-group-title">Yıldız: Köz</a></div>
+            <div class="toc-group">
+                <a href="#gezegenler" class="toc-group-title">Gezegenler</a>
+                <div class="toc-sub">
+                    <a href="#kul">1. Kül</a>
+                    <a href="#curuf">2. Cüruf</a>
+                    <a href="#ocak">3. Ocak</a>
+                    <a href="#mahser-gezegen">4. Mahşer</a>
+                    <a href="#buyan">5. Buyan</a>
+                    <a href="#tersane">6. Tersane</a>
+                    <a href="#bulut">7. Bulut</a>
+                    <a href="#duman">8. Duman</a>
+                    <a href="#yabani">9. Yabani</a>
+                    <a href="#halka">10. Halka</a>
+                </div>
+            </div>
+            <div class="toc-group"><a href="#kriz" class="toc-group-title">Mahşer Krizi</a></div>
+            <div class="toc-group">
+                <a href="#taraflar" class="toc-group-title">Taraflar</a>
+                <div class="toc-sub">
+                    <a href="#t-uzay">Uzay Komandosu</a>
+                    <a href="#t-muhafiz">İmp. Muhafızları</a>
+                    <a href="#t-ork">Ork Veletleri</a>
+                    <a href="#t-rahibe">Muharip Rahibeler</a>
+                    <a href="#t-kaos">Kaos Komandoları</a>
+                    <a href="#t-karaelf">Kara Ælfler</a>
+                    <a href="#t-huner">Hünerdiyar Ælfleri</a>
+                    <a href="#t-genugru">Genuğru Tarikatı</a>
+                    <a href="#t-bozfaris">Bozfarisler</a>
+                    <a href="#t-alaca">Alacalar</a>
+                    <a href="#t-engiz">Engizisyon</a>
+                    <a href="#t-duat">Duatlar</a>
+                    <a href="#t-tekno">Teknokratlar</a>
+                    <a href="#t-tian">Tiān Kaşifleri</a>
+                    <a href="#t-tiranid">Tiranidler</a>
+                </div>
+            </div>
+            <div class="toc-group"><a href="#kovanalti" class="toc-group-title">Demir Kovanaltı</a></div>
+            <div class="toc-group"><a href="#dramatis" class="toc-group-title">Dramatis Personae</a></div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="lore-main">
+
+            <!-- SYSTEM MAP -->
+            <div class="sec-head" id="sistem">
+                <span class="sec-tag">Galaktik Harita</span>
+                <h2>Sistem Haritası</h2>
+            </div>
+            <figure class="lore-img">
+                <img src="img-mahser-sistemi.png" alt="Mahşer Sistemi — on gezegen ve Köz yıldızı">
+                <figcaption>Mahşer Sistemi — Köz yıldızı ve on gezegen</figcaption>
+            </figure>
+
+            <table class="sys-tbl">
+                <thead><tr><th>#</th><th>Gezegen</th><th>Tür</th><th>Birincil Önem</th></tr></thead>
+                <tbody>
+                    <tr><td>—</td><td class="pn">Köz</td><td class="pt">Yıldız (yaşlı turuncu dev)</td><td>Sistemin merkezi</td></tr>
+                    <tr><td>1</td><td class="pn">Kül</td><td class="pt">Ölü dünya</td><td>Navigasyon referansı</td></tr>
+                    <tr><td>2</td><td class="pn">Cüruf</td><td class="pt">Ölü dünya (Ay: Gedik)</td><td>Kara Ælf labirent kapısı</td></tr>
+                    <tr><td>3</td><td class="pn">Ocak</td><td class="pt">Madencilik dünyası</td><td>Genuğru Tarikatı kökeni, Ork baskınları</td></tr>
+                    <tr><td>4</td><td class="pn">Mahşer</td><td class="pt">Kovan / Sanayi dünyası</td><td>Birincil çatışma bölgesi, Duat mezarları</td></tr>
+                    <tr><td>5</td><td class="pn">Buyan</td><td class="pt">Buz dünyası</td><td>Rahibe tapınağı; Tiān gözlem noktası</td></tr>
+                    <tr><td>6</td><td class="pn">Tersane</td><td class="pt">Donanma tesisi</td><td>İmparatorluk tesisi, kısmen yozlaşmış</td></tr>
+                    <tr><td>7</td><td class="pn">Bulut</td><td class="pt">Gaz devi (14 ay)</td><td>Tiān izleme istasyonları</td></tr>
+                    <tr><td>8</td><td class="pn">Duman</td><td class="pt">Gaz devi (Ay: Gölge)</td><td>Hünerdiyar Ael-Daris gizli karakolu</td></tr>
+                    <tr><td>9</td><td class="pn">Yabani</td><td class="pt">Orman dünyası</td><td>Ælf bakir dünyası, kadim dünya, Tiranid iniş yeri</td></tr>
+                    <tr><td>10</td><td class="pn">Halka</td><td class="pt">Halkalı gaz devi</td><td>Dış sınır; Duat filosu, Tiranid girişi</td></tr>
+                </tbody>
+            </table>
+
+            <!-- STAR -->
+            <div class="sec-head" id="yildiz">
+                <span class="sec-tag">Merkez</span>
+                <h2>Yıldız: Köz</h2>
+            </div>
+            <p>Mahşer Sistemi'nin merkezinde Köz bulunur: yaşlı, yavaşça şişen, solgun turuncu bir dev yıldız. Yaklaşık on milyon yıl içinde ölecektir; yetkililerin bunu umursamasına gerek yoktur, çünkü sistemdeki diğer sorunlar çok daha acildir.</p>
+            <p>Köz'ün adı eski bir Teknorahiplik katalog referansından bozulmuştur; artık sadece "kor, köz ateş" anlamına gelen bu kelimeyle anılır. Işığı kırmızımsı turuncudur ve sistemdeki her gezegenin gökyüzüne eski kan rengi verir.</p>
+
+            <!-- PLANETS -->
+            <div class="sec-head" id="gezegenler">
+                <span class="sec-tag">On Dünya</span>
+                <h2>Sistemin Gezegenleri</h2>
+            </div>
+
+            <h3 class="planet" id="kul"><span class="pnum">1.</span> Kül <span class="ptype">Ölü Dünya</span></h3>
+            <p>Sistemin en iç gezegenidir. Köz'ün yakınlığı onu tamamen sterilize etmiştir: çıplak, siyah kaya, sıfır atmosfer, sıfır değer. Navigasyon haritalarında referans noktası olarak kullanılır. Başka bir işlevi yoktur.</p>
+
+            <h3 class="planet" id="curuf"><span class="pnum">2.</span> Cüruf <span class="ptype">Ölü Dünya · Ay: Gedik</span></h3>
+            <p>İkinci gezegen jeolojik açıdan dengesizdir. Yüzeyi kırık fay hatları ve yarı aktif volkanik bölgelerle kaplıdır; büyük çaplı bir silah atışı bu gezegenin bütünlüğünü tehlikeye atabilir. Küçük ayı Gedik ise görünürde tamamen anlamsız bir kaya parçasıdır. <em>Görünürde.</em></p>
+            <div class="secret">
+                <div class="s-label">Gizli — Engizisyon Arşivi</div>
+                <p>Gedik'in derinliklerinde, Yarılan Ay Kabalı'nın üç asırdır kullandığı gizli bir Labirent kapısı mevcuttur. Bu kapı, Kara Elf korsanlarının Mahşer Sistemi'ne sessizce girmesini ve çıkmasını sağlar. İmparatorluk bu kapıdan habersizdir. Kabal ise bu cehaletin sürmesini titizlikle sağlar.</p>
+            </div>
+
+            <h3 class="planet" id="ocak"><span class="pnum">3.</span> Ocak <span class="ptype">Madencilik Dünyası</span></h3>
+            <p>Üçüncü gezegen, Teknorahiplik gözetiminde işletilen zorlu bir sınai madencilik kolonisidir. Yüzey sıcaklıkları insan yaşamı için son derece ağırdır; işçiler zırhlı yeraltı tesislerinde ve orbital istasyonlarda barınır. Ocak, Mahşer'in ocakmabetlerine ham madde ve yakıt sağlar; sistemin ekonomik omurgasının sessiz, ihmal edilmiş parçasıdır.</p>
+            <div class="secret">
+                <div class="s-label">Gizli — Genuğru Enfeksiyonu</div>
+                <p>Ocak'ın en derin madencilik tünellerinde, <strong>Sonsuz Kurtun Cemaati</strong> adlı Genuğru Tarikatı iki yüzyıldır büyümektedir. Melez bireyler madenci loncalarına, Teknorahiplik teknisyenlerine ve yönetim kademelerine sızmıştır. Şeyh uykudadır ve beklemektedir.</p>
+            </div>
+            <p>Ork korsanları da zaman zaman Ocak'ın yörünge istasyonlarına baskın düzenler. Bu baskınlar düzensiz ve kanlıdır ama şimdiye kadar hep püskürtülmüştür. <em>Şimdiye kadar.</em></p>
+
+            <h3 class="planet" id="mahser-gezegen"><span class="pnum">4.</span> Mahşer <span class="ptype">Sanayi Dünyası</span></h3>
+            <p>Dördüncü gezegen. Sistemin kalbi. Milyarlarca nüfus barındıran altı dev kovanketten oluşur; bunlardan en büyüğü, kıtasal ölçekte bir sanayi kompleksinin üzerine kurulmuş <strong>Demirkovan</strong>'dır. Mahşer'in ocakmabetleri, altsektör genelinde lazer tüfekleri, tank gövdeleri, topçu mühimmatı ve fezagemisi bileşenleri üretir.</p>
+            <p>Gezegenin yüzeyi küle dönmüş çöller, asit yağmuru ormanları ve zehirli okyanuslardan ibarettir; insan yaşamı yalnızca kovan şehirlerin içinde mümkündür.</p>
+            <div class="secret">
+                <div class="s-label">Gizli — Mahşer Hanedanı</div>
+                <p>Demirkovan'ın en eski bölümlerinin temellerinin kilometrelerce altında, <strong>Mahşer Hanedanı</strong> uyumaktadır; altmış milyon yıl önce bu dünyayı ilk inşa eden Duatların kadim mezarlıklarından oluşan bir ağ. İmparatorluk, kovankentlerini tam anlamıyla bir Duat altyapısının üzerine inşa etmiştir ve bundan hiç haberi olmamıştır.</p>
+                <p>997.M41'de protokol tamamlandı. Mezarlar açıldı.</p>
+            </div>
+            <h4>Demirkovan'ın Demirden Kovanaltı</h4>
+            <p>Gezegenin birincil çatışma bölgesi. Binlerce yıllık çökmüş fabrikalara, taşkın jeneratörlere, zehirli atık göllerine ve hiçbir haritada bulunmayan eski geçit ağlarına ev sahipliği yapar. Artık her köşeden farklı bir şey çıkar.</p>
+            <figure class="lore-img">
+                <img src="img-berzah.png" alt="Berzah — Demirkovan kovankent haritası ve Kovanaltı bölgeleri">
+                <figcaption>Berzah (Demirkovan) — Kovankent haritası ve Kovanaltı bölgeleri</figcaption>
+            </figure>
+
+            <h3 class="planet" id="buyan"><span class="pnum">5.</span> Buyan <span class="ptype">Buz Dünyası</span></h3>
+            <p>Beşinci gezegen soğuk, uzak ve yüzeyinde küçük bir İmparatorluk Tapınağı saklı olmasa, büyük ölçüde önemsiz kabul edilebilir. <strong>Alev Azizesi Oleander'ın Emanethanesi</strong>, iki yüzyıldır Kızıl Damla Tarikatı tarafından korunmaktadır. Tesis küçüktür; bir kaç yüz muharip rahibe ve destek personelinden ibarettir. Ama manevi önemi muazzamdır.</p>
+            <p>Mahşer Sistemi'nin karışmaya başlaması ve Kaos Komandolarının varlığının doğrulanması üzerine Başrahibe Priyah, Buyan'daki garnizonunun büyük bölümünü aktif savaş operasyonlarına yönlendirmiştir. Tapınak boş değildir; ama eski halinin silik bir gölgesi kadar korunmaktadır.</p>
+
+            <h3 class="planet" id="tersane"><span class="pnum">6.</span> Tersane <span class="ptype">İmparatorluk Donanması Tesisi</span></h3>
+            <p>Altıncı dünya tam anlamıyla bir gezegen değildir: Köz'ün yeterince uzağında yörüngede dönen, birbirine kenetlenmiş istasyonlar ve iskele komplekslerinden oluşan devasa bir İmparatorluk Donanması tesisidir. Üç büyük izleme istasyonu Tersane'ye bağlıdır: <strong>Demir Üssü</strong>, <strong>Çelik Üssü</strong> ve <strong>Tunç Üssü</strong>.</p>
+            <p>Tunç Üssü altı ay önce sessizliğe büründü. Resmi kayıtlar "teknik arıza" diyor. Tahkikçi Vorn ise bu açıklamaya inanmıyor. Kaos tarikatçılarının Tersane'nin alt istasyonlarından birine sızdığına dair güçlü kanıtlar mevcuttur.</p>
+
+            <h3 class="planet" id="bulut"><span class="pnum">7.</span> Bulut <span class="ptype">Gaz Devi · 14 Ay</span></h3>
+            <p>Yedinci gezegen, Köz'ün soluk turuncu ışığında bant bant sarı-krem rengiyle görünen büyük bir gaz devidir. Fırtınaları Mahşer'den çıplak gözle görülebilir.</p>
+            <div class="secret">
+                <div class="s-label">Gizli — Tiān Gözlem Ağı</div>
+                <p>Ondört ayından üçü (Bulut-3, Bulut-7 ve Bulut-10) on beş yıldır aktif Tiān izleme tesislerine ev sahipliği yapmaktadır. Bu tesislerin varlığını İmparatorluk henüz tespit edememiştir.</p>
+                <p>Sa'cea Eyaletinden Esîri Kor'el Sha'is, Mahşer Sistemi'ni Ulu Amaç kapsamında değerlendirmiştir ve yavaş bir entegrasyon süreci planlamaktadır.</p>
+            </div>
+
+            <h3 class="planet" id="duman"><span class="pnum">8.</span> Duman <span class="ptype">Gaz Devi · Ay: Gölge</span></h3>
+            <p>Sekizinci gezegen daha küçük, daha karanlık ve daha az çarpıcıdır.</p>
+            <div class="secret">
+                <div class="s-label">Gizli — Ael-Daris Karakolu</div>
+                <p>Tek büyük ayı <strong>Gölge</strong>, kalın bir buz tabakasıyla kaplıdır ve bu buz tabakasının altında <strong>Hünerdiyar Ael-Daris Ælflerinin</strong> gizli bir ileri karakol tesisi bulunmaktadır. Ael-Daris Ælf başkahinleri buradan Mahşer Sistemi'ni on yıllardır izlemiştir: Mahşer Hanedanı'nın uyanışını tahmin etmişler, engellemeye çalışmışlar ve başarısız olmuşlardır.</p>
+                <p>Başarısızlık hünerdiyarı ikiye bölmüştür. Bir kanat, asıl tehdidin Duatların olduğunu savunur. Öbür kanat, Yabani gezegenindeki daha eski şeyin çok daha önemli olduğunu düşünmektedir.</p>
+            </div>
+
+            <h3 class="planet" id="yabani"><span class="pnum">9.</span> Yabani <span class="ptype">Orman Dünyası (Kadim Dünya)</span></h3>
+            <p>Dokuzuncu gezegen, İmparatorluk haritalarında "ıssız, değersiz, biyolojik açıdan ilgi çekici" şeklinde geçer. Yüzeyi yoğun ormanlarla kaplıdır; bazı bölgelerde bitki örtüsünün üst katmanlarından geçen ışık bile yoktur.</p>
+            <div class="secret">
+                <div class="s-label">Gizli — Kadim Dünya</div>
+                <p>Bu sapmaların nedeni Hünerdiyar Ael-Daris Ælfleridir. Yabani, Ael-Daris'in dört bin yıldır koruduğu bir bakir dünyadır. Yabani'nin en derin orman tabanlarının altında, Duatların bile unuttuğu <strong>daha eski bir şey</strong> gömülüdür. Alacalar bu şeyin farkındadır. Başkahinler bu şeyden korkmaktadır.</p>
+            </div>
+
+            <h3 class="planet" id="halka"><span class="pnum">10.</span> Halka <span class="ptype">Halkalı Gaz Devi</span></h3>
+            <p>Onuncu ve son gezegen, sistemin dış kenarında döner. Halkaları devasa mühimmat ve mayın alanına dönüştürülmüştür. Tiranid kopma yığını Halka'nın çevresinden gelerek sisteme girmiştir; Duat oniks gemilerinden oluşan küçük bir filo ise Halka'nın gölgesinde sessizce beklemektedir.</p>
+
+            <hr class="sep">
+
+            <!-- CRISIS -->
+            <div class="sec-head" id="kriz">
+                <span class="sec-tag">Kronoloji</span>
+                <h2>Mahşer Krizi</h2>
+            </div>
+            <p>Kriz zincirleme gerçekleşmiş bir dizi felakettir. Tek bir nedeni yoktur. Her şey yüzyıllar önce, farklı zamanlarda ve farklı ellerde kurulmuş domino taşlarının birer birer düşmesinden ibarettir.</p>
+            <div class="timeline">
+                <div class="tl-entry"><div class="tl-date">İki yüz yıl önce</div><p>Genuğru Tarikatı, Ocak'ın derinliklerinde kök salmaya başladı. Şeyh'in ilk nesli doğdu.</p></div>
+                <div class="tl-entry"><div class="tl-date">On beş yıl önce</div><p>Sa'cea Sept, Bulut'un aylarına izleme tesisleri kurdu. Esîri Sha'is, Mahşer'in entegrasyonu için on yıllık plan hazırladı.</p></div>
+                <div class="tl-entry"><div class="tl-date">Dokuz yıl önce</div><p>Düşkün Hükümran sisteme girdi. İblis Prens Morthax'ı çağırmak için Kovanaltı'nda ritüel hazırlıklara başladı.</p></div>
+                <div class="tl-entry"><div class="tl-date">Üç yıl önce</div><p>Kara Ælf baskın ekipleri sistemde alışılmadık miktarda yüksek değerli av tespit etti.</p></div>
+                <div class="tl-entry"><div class="tl-date">İki yıl önce</div><p>Bir Tiān izleme sondası, Mahşer'in altından yükselen açıklanamayan ısı belirtiler kaydetti.</p></div>
+                <div class="tl-entry"><div class="tl-date">997.M41</div><p>Mahşer Hanedanı'nın protokolü tamamlandı. Mezarlar açıldı. İlk temas ekibinin büyük bölümü dönemedi.</p></div>
+                <div class="tl-entry"><div class="tl-date">998.M41, başı</div><p>Tahkikçi Thessaly Vorn sisteme vardı. Takviye istedi.</p></div>
+                <div class="tl-entry"><div class="tl-date">998.M41, ortası</div><p>Kopma Yığın Nagaia dış kenara ulaştı. Morthax somutlaşmaya başladı. Bozfarisler çağrıldı.</p></div>
+                <div class="tl-entry"><div class="tl-date">998.M41, bugün</div><p>Her büyük güç sisteme girmiştir. Çoğu diğerlerinden habersizdir. Hepsi infaz timlerini gönderir.</p></div>
+            </div>
+
+            <hr class="sep">
+
+            <!-- FACTIONS -->
+            <div class="sec-head" id="taraflar">
+                <span class="sec-tag">On Beş Güç</span>
+                <h2>Taraflar</h2>
+            </div>
+
+            <div class="fc" id="t-uzay">
+                <h4>Uzay Komandosu İzcileri</h4>
+                <div class="fc-sub">Kapitul: Kül Pençesi — Kızıl Muhafızların halef kapitullarından biri</div>
+                <p>Yavaş ve garantici bir kapituldur; geniş çaplı saldırıdan önce istihbarat toplamayı tercih eder. Kapitul Üstadı <span class="fc-leader">Daveth Krael</span> izci bölüklerini sisteme dağıtmıştır. <span class="fc-leader">İzci-Rahip Müfettişi Tyrus</span> operasyonları koordine eder.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Bu sistem onların sorumlu oldukları bölgededir ve her şey aynı anda yanmaya başlamıştır.</div>
+            </div>
+
+            <div class="fc" id="t-muhafiz">
+                <h4>İmparatorluk Muhafızları</h4>
+                <div class="fc-sub">Alay: Mahşer Piyadeleri, 3. "Demir" Alayı</div>
+                <p>3. Alay yirmi yıldır yalnızca Demirkovan'ın kovanaltında görev yapar. Oradaki her çökmüş fabrikayı ezbere bilirler. <span class="fc-leader">Çavuş Ayla Demirci</span> birinci kıdemli infaz timini yönetir. Duatlar ilk göründüğünden bu yana tam bir gece uyumamıştır.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Bu onların gezegeni. Gidecekleri başka bir yer yok.</div>
+            </div>
+
+            <div class="fc" id="t-ork">
+                <h4>Ork Veletleri Güruhu</h4>
+                <div class="fc-sub">Klan: Nemrutdiş'in Haydutları (Feci Ay kökenli)</div>
+                <p>Uzay gemisi enkazı <em>Evrenin Yumruğu</em> yirmi üç yıl önce parçalandı. <span class="fc-leader">Cenkbeyi Nemrutdiş</span> ve binlerce Ork fezaya saçıldı. Şimdi Duman'ın bir ayında köhne bir asteroid kalesi işletiyorlar ve hurda mekiklerle Kovanaltı'na dalıyorlar. Nemrutdiş bunu Mahşer tarihinin en iyi dövüşü olarak nitelendiriyor.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Dövüşmek için. Başka nedene ihtiyaç mı var?</div>
+            </div>
+
+            <div class="fc" id="t-rahibe">
+                <h4>Muharip Rahibeler</h4>
+                <div class="fc-sub">Tarikat: Kızıl Damla Tarikatı, Buyan Garnizonu</div>
+                <p><span class="fc-leader">Başrahibe Priyah</span> Kaos Komandolarının varlığı doğrulandığında görevini genişletmekte bir an bile tereddüt etmedi. İnfaz timleri Kovanaltı'nda hem Kaos müritleriyle hem de Genuğru Tarikatının melezleriyle çatışıyor.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Buyan'daki tapınak tehdit altında. Kaos tehdidi altında. Bu üçünün aynı anda olması bir iman meselesidir.</div>
+            </div>
+
+            <div class="fc" id="t-kaos">
+                <h4>Kaos Komandoları</h4>
+                <div class="fc-sub">Çete: Düşkün Hükümran (Kelam Taşıyanların kolu)</div>
+                <p>Değişim İlahı'nı Kelam Taşıyanların ibadet şekli üzerinden yorumlayan sapkın bir kol. İnfaz timleri Kovanaltı'nda savaşmak için değil, yerleştirmek için vardır: iblis mürekkebiyle çizilmiş ayin işaretleri, ark rezonatörleri, bozulmuş servitorlar. <span class="fc-leader">Kara Havari Soraven</span> konuşmaz. Sesinin sıradan kulaklar için çok tehlikeli olduğunu söylüyor.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Morthax, Mahşer'in bir ark fırtınasına dönüşeceğini görmüştür. Düşkün Hükümran bu fırtınayı hazırlıyor.</div>
+            </div>
+
+            <div class="fc" id="t-karaelf">
+                <h4>Kara Ælfler</h4>
+                <div class="fc-sub">Kabal: Yarılan Ay Kabalı / Kanlı Sınır Cadı Meclisi</div>
+                <p>Gedik'teki labirent kapısı üç yüzyıllık arka kapılarıdır. Aktif infaz timleri <strong>Kanlı Sınır Cadı Meclisi</strong>'ne aittir: dövüşü tiyatro olarak gören akrobatik katiller. <span class="fc-leader">Sukkubus Ysariel</span> karşılaştığı her taraftan bir hatıra eşyası toplamayı kişisel oyunu haline getirmiştir.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Gedik'teki kapı onların. Fırsatçılık bir stratejidir.</div>
+            </div>
+
+            <div class="fc" id="t-huner">
+                <h4>Hünerdiyar Ælfleri</h4>
+                <div class="fc-sub">Hünerdiyar: Ael-Daris</div>
+                <p>Başkahinleri Mahşer Hanedanı'nın uyanacağını yüzyıllar önce görmüştür. On yıllarca ertelemeye çalışıp başarısız olmuşlardır. <span class="fc-leader">Başkahin Ithrandiel Sorn</span> iki şeyi aynı anda arıyor: Alt-Kova'nın altındaki daha eski varlık ve Yabani'yi koruma.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Yabani onların bakir dünyası. Kovanaltı'nda gömülü olan şey herkesi ilgilendiriyor.</div>
+            </div>
+
+            <div class="fc" id="t-genugru">
+                <h4>Genuğru Tarikatı</h4>
+                <div class="fc-sub">Cemaat: Sonsuz Kurtun Cemaati</div>
+                <p>İki yüz yıldır sabırlıdır. Şeyhleri Demirkovan'ın en derin bölümünde uyumakta ve büyük gemilerin gökyüzünden düşeceği anı beklemektedir. <span class="fc-leader">4. Nesil Talebe Önderi Uthman-7</span> Kovanaltı'nın doğu su arıtma bölgesini kontrol eder.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Onlar zaten buradaydı.</div>
+            </div>
+
+            <div class="fc" id="t-bozfaris">
+                <h4>Bozfarisler</h4>
+                <div class="fc-sub">Ordo Malleus Özel Müdahale Timi</div>
+                <p>Ordo Malleus beş Bozfaris gönderdi. İsimleri gizlidir. Sayıları beştir. Yeterlidir. Morthax'ın Kovanaltı'na yerleştirdiği altyapıyı sistemli olarak söküp imha ediyorlar.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> İblis Prens burada. Bu onların işi. Başka açıklamaya gerek yok.</div>
+            </div>
+
+            <div class="fc" id="t-alaca">
+                <h4>Alacalar</h4>
+                <div class="fc-sub">Kumpanya: Kırık Ayna Kumpanyası</div>
+                <p>Başka hiçbirinin anladığı nedenler için buradalar. <strong>Kırık Ayna Kumpanyası</strong> labirentte bir yol takip ediyor; Gedik kapısından geçen ve Kovanaltı'nın en eski bölümüne uzanan bir yol. <span class="fc-leader">Gölgekahin Maraviel</span> bunu kimseyle paylaşmamıştır.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Kegorak'ın bir planı var. Sahne Mahşer. Perde açık.</div>
+            </div>
+
+            <div class="fc" id="t-engiz">
+                <h4>Engizisyon</h4>
+                <div class="fc-sub">Tahkikçi: Thessaly Vorn, Ordo Xenos</div>
+                <p><span class="fc-leader">Tahkikçi Thessaly Vorn</span> on sekiz aydır sistemi incelemektedir. Genuğru faaliyeti arıyordu; bunun yerine aynı anda her şeyi buldu. İnfaz timi titizlikle seçilmiştir: Ölümgözcüleri geçmişli bir sorgucu, zenobiyoloji uzmanı iki yardımcı, eğitilmiş bir teknorahip, üç kıdemli Yıldırımordusu piyadesi ve eski bir Kara Ælf esiri.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Birinin sistemi anlaması gerekiyor. Anlayan yönetir.</div>
+            </div>
+
+            <div class="fc" id="t-duat">
+                <h4>Duatlar</h4>
+                <div class="fc-sub">Hanedan: Mahşer Hanedanı — Firavun: Szekhthar Lâyetazelzel</div>
+                <p>Mahşer Hanedanı altmış milyon yıl önce bu dünyayı inşa etti. İnsanlar geldi, kendi şehirlerini tam da eski altyapının üstüne inşa etti. Bu Duatlar için bir ihlaldir. <span class="fc-leader">Firavun Szekhthar</span> sabırsız bir komutan değildir. Ölümsüz infaz timleri tünelleri sistematik olarak temizliyor.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Bu onların dünyası. Her zaman öyleydi.</div>
+            </div>
+
+            <div class="fc" id="t-tekno">
+                <h4>Teknokratlar</h4>
+                <div class="fc-sub">Ocakmabet: Legio Ferrox, Mahşer Teknorahip Bölgesi</div>
+                <p><span class="fc-leader">Başsahir Helve Drost</span> (dört yüz yaşında, kırk yıldır biyolojik gözlerini kullanmayan) bu krizi tarihinin en önemli anı olarak görmektedir. Aktif Duat teknolojisi — fazteknoloji, kendini onarabilen metalik organizmalar. Drost örnekler istiyor. Mümkünse çalışır halde bir gauss-yüzer.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Ocak-mabetler korunmalı. Ve bu teknoloji anlaşılmalı.</div>
+            </div>
+
+            <div class="fc" id="t-tian">
+                <h4>Tiān İmparatorluğu — Kaşifler</h4>
+                <div class="fc-sub">Eyalet: Sa'cea — Heyet: Kor'el Sha'is'in Derin Keşif Heyeti</div>
+                <p>Plan basitti: gözlem, diplomatik temas, yavaş entegrasyon. Plan artık geçerli değildir; ama fırsat dönüşmüştür. <span class="fc-leader">Shas'ui Kael Rann</span> ve Kaşif infaz timi Bulut-3 istasyonundan Mahşer'e inmiştir.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Fırsat bekliyor. Kaşifler bir fırsatını bulur.</div>
+            </div>
+
+            <div class="fc" id="t-tiranid">
+                <h4>Tiranidler</h4>
+                <div class="fc-sub">Kopma Yığın: Nagaia (Livyatan Ana Yığını'nın bir kolu)</div>
+                <p>Mahşer Sistemi'nin ürettiği psişik gürültü — eşzamanlı Kaos ayinleri, Duat uyanışı, Genuğru tarikatının sinyali — uzayda parlak ve kaotik bir işaret gibi görünür. Ana Yığın bilinci bu işareti duyar. Kopma yığın henüz küçüktür. Ama büyümektedir.</p>
+                <div class="fc-why"><strong>Neden buradalar:</strong> Genuğru Tarikatı bir asırdır onları çağırıyor. Psişik işaret mükemmel. Biyokütle bol.</div>
+            </div>
+
+            <hr class="sep">
+
+            <!-- KOVANALTI ZONES -->
+            <div class="sec-head" id="kovanalti">
+                <span class="sec-tag">Birincil Savaş Alanı</span>
+                <h2>Ana Çatışma Bölgesi: Demir Kovanaltı</h2>
+            </div>
+            <p>Demirkovan'ın Kovanaltı, on beş tarafın yakınsadığı birincil infaz noktasıdır.</p>
+
+            <div class="zone"><h4>Pas Labirenti</h4><p class="z-desc">Çökmüş ağır sanayi enkaz alanı. Pusu için ideal.</p><p class="z-threat"><strong>Birincil tehdit:</strong> Ork Veletler, Genuğru Tarikatı</p></div>
+            <div class="zone"><h4>Atık Gölleri</h4><p class="z-desc">Yüzyıllık kimyasal atık havuzları. Duatlar buradaki zemin çatlaklarından çıkıyor.</p><p class="z-threat"><strong>Birincil tehdit:</strong> Duatlar, İmparatorluk Muhafızları</p></div>
+            <div class="zone"><h4>Oleander Tünelleri</h4><p class="z-desc">Eski hac güzergahları. Rahibeler bu koridorları kullanıyor; Kaos müritleri rezonatör yerleştiriyor.</p><p class="z-threat"><strong>Birincil tehdit:</strong> Kaos, Rahibeler</p></div>
+            <div class="zone"><h4>Kurdeşen</h4><p class="z-desc">1 km genişliğinde çökmüş santral kubbesi. Cemaatin toplanma yeri. Şeyh üç kat aşağıda uyuyor.</p><p class="z-threat"><strong>Birincil tehdit:</strong> Genuğru Tarikatı, Tiranidler</p></div>
+            <div class="zone"><h4>Kuledibi</h4><p class="z-desc">Kovanaltı'nın en eski bölümü. Kovan öncesi kalıntılar. Alacaların aradığı şey burada.</p><p class="z-threat"><strong>Birincil tehdit:</strong> Alacalar, Hünerdiyar Ælfleri</p></div>
+
+            <hr class="sep">
+
+            <!-- DRAMATIS PERSONAE -->
+            <div class="sec-head" id="dramatis">
+                <span class="sec-tag">Kilit İsimler</span>
+                <h2>Dramatis Personae</h2>
+            </div>
+            <table class="dtable">
+                <thead><tr><th>İsim</th><th>Taraf</th><th>Rol</th></tr></thead>
+                <tbody>
+                    <tr><td class="nm">Tahkikçi Thessaly Vorn</td><td class="fac">Engizisyon</td><td>İmparatorluk tepkisinin koordinatörü</td></tr>
+                    <tr><td class="nm">Firavun Szekhthar Lâyetazelzel</td><td class="fac">Mahşer Hanedanı</td><td>Hanedanın uyanmış hükümdarı</td></tr>
+                    <tr><td class="nm">İblis Prens Morthax</td><td class="fac">Kaos (Değişim İlahı)</td><td>Ark bozulmasının mimarı</td></tr>
+                    <tr><td class="nm">Kara Havari Soraven</td><td class="fac">Düşkün Hükümran</td><td>Morthax'ın aracı; infaz timlerini yönetir</td></tr>
+                    <tr><td class="nm">Başrahibe Priyah</td><td class="fac">Kızıl Damla Tarikatı</td><td>Rahibe kuvvetlerinin komutanı</td></tr>
+                    <tr><td class="nm">İzci-Rahip Müfettişi Tyrus</td><td class="fac">Kül Pençesi</td><td>İzci infaz timlerini koordine eder</td></tr>
+                    <tr><td class="nm">Çavuş Ayla Demirci</td><td class="fac">Mahşer Piyadeleri</td><td>Kıdemli infaz timi komutanı</td></tr>
+                    <tr><td class="nm">Cenkbeyi Nemrutdiş</td><td class="fac">Ork Haydutlar</td><td>Kelle sayısında önde</td></tr>
+                    <tr><td class="nm">Esîri Kor'el Sha'is</td><td class="fac">Sa'cea Eyaleti</td><td>Tiān gözlemcisi</td></tr>
+                    <tr><td class="nm">Shas'ui Kael Rann</td><td class="fac">Sa'cea Kaşifleri</td><td>Aktif Tiān infaz timi lideri</td></tr>
+                    <tr><td class="nm">Uthman-7</td><td class="fac">Sonsuz Kurtun Cemaati</td><td>4. nesil melez önderi</td></tr>
+                    <tr><td class="nm">Başkahin Ithrandiel Sorn</td><td class="fac">Hünerdiyar Ael-Daris</td><td>Ælf infaz timlerini yönetiyor</td></tr>
+                    <tr><td class="nm">Gölgekahin Maraviel</td><td class="fac">Kırık Ayna Kumpanyası</td><td>Alaca kumpanyası lideri</td></tr>
+                    <tr><td class="nm">Başsahir Helve Drost</td><td class="fac">Teknorahiplik</td><td>Duat teknolojisi istiyor</td></tr>
+                    <tr><td class="nm">Sukkubus Ysariel</td><td class="fac">Yarılan Ay Kabalı</td><td>Cadı Meclisi infaz timi lideri</td></tr>
+                </tbody>
+            </table>
+
+            <div class="stamp">
+                <p>Dağıtım: Departmento Munitorum, Kızıl Gizlilik Seviyesi</p>
+                <p class="stamp-warn">Tahkikçi Vorn'un notu: Bu belgeyi yetkisi olmaksızın okuyanların kendini açıklaması için otuz saniyesi var.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">39,000: İNFAZ TİMİ</div>
+                    <p class="footer-tagline">Türkçe Warhammer topluluğu için ücretsiz, açık kaynaklı taktiksel savaş oyunu.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Kaynaklar</h4>
+                        <a href="mahser.html">Mahşer (Lore)</a>
+                        <a href="srd.html">Kurallar (SRD)</a>
+                        <a href="39k-infaz-timi.pdf">PDF İndir</a>
+                        <a href="tim-kur.html">Tim Kur</a>
+                        <a href="kaynaklar.html">Minyatürler & STL</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Topluluk</h4>
+                        <a href="https://discord.gg/x9WjgdqbX3">Discord</a>
+                        <a href="https://www.reddit.com/r/Warhammer40KTR/">Reddit</a>
+						<a href="https://www.youtube.com/@savasmasasi">YouTube</a>
+                        <a href="https://github.com/savasmasasi/infaztimi">GitHub</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Hakkında</h4>
+                        <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.tr">Lisans (CC0)</a>
+                        <a href="#">Katkıda Bulunun</a>
+                        <a href="mailto:savasmasasi@gmail.com">İletişim</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Bu proje Games Workshop ürünü değildir. Warhammer 40,000 ve ilgili tüm ögeler Games Workshop Ltd.'nin ticari markalarıdır. Fan yapımı, eğitim amaçlı içerik.</p>
+                <p class="footer-license"><strong>CC0 1.0 Universal</strong> — Bu eser kamusal alandadır. Özgürce kullanın, paylaşın, değiştirin. Tüm illüstrasyonlar <a href="https://www.patreon.com/c/brushray/posts?filters%5Btag%5D=warhammer40k" target="_blank" rel="noopener">Dmitry Brushray</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
